@@ -1,1 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex-column {
+    max-width: 260px;
+}
+
+img {
+    margin: 5px;
+}
+
+.scale {
+    transform: scaleY(1.05);
+    padding-top: 5px; 
+}
 
