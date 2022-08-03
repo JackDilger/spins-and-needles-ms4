@@ -5,6 +5,26 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.text-white {
+    color: whitesmoke !important;
+}
+
+.border-white {
+    border: 1px solid whitesmoke !important;
+}
+
+.bg-black {
+    background: #000 !important;
+}
+
+.bg-orange {
+    background: #ffbd59 !important;
+}
+
+.btn-white {
+    color: whitesmoke !important;
+}
+
 .flex-column {
     max-width: 260px;
 }
