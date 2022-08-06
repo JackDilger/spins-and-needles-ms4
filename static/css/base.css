@@ -48,8 +48,8 @@ img {
 }
 
 #home-container {
-    padding-top: 50px
-    margin-top: 75px
+    padding-top: 20px;
+    margin-top: 35px;
 }
 
 /* fixed top navbar only on medium and up */
