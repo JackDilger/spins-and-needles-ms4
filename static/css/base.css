@@ -129,6 +129,10 @@ i {
   box-shadow: 1px 1px 10px #000;
 }
 
+a.genre-badge > span.badge:hover {
+  background: #212529 !important;
+  color: #fff !important;
+}
 
 
 
