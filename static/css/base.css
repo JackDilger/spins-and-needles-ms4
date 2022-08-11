@@ -5,6 +5,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+
 .text-white {
     color: whitesmoke !important;
 }
@@ -49,11 +51,6 @@ img {
 #logo {
   width: 300px;
   height: 100px;
-}
-
-#home-container {
-    padding-top: 20px;
-    margin-top: 35px;
 }
 
 #delivery-banner {
@@ -114,20 +111,6 @@ i {
 }
 
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
-    }
-}
 
 
 
