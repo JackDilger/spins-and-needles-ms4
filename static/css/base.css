@@ -9,6 +9,10 @@ body {
     color: whitesmoke !important;
 }
 
+.text-black {
+  color: #000;
+}
+
 .border-white {
     border: 1px solid whitesmoke !important;
 }
@@ -43,8 +47,8 @@ img {
 }
 
 #logo {
-    width: 300px;
-    height: 100px;
+  width: 300px;
+  height: 100px;
 }
 
 #home-container {
@@ -104,6 +108,11 @@ nav.stroke ul li a:hover:after {
 i:hover {
   color: #ff914d;
 }
+
+i {
+  color: white;
+}
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
