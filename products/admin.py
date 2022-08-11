@@ -21,5 +21,6 @@ class GenreAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Product)
-admin.site.register(Genre)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Genre, GenreAdmin)
+
