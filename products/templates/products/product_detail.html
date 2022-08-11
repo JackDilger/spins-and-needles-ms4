@@ -10,5 +10,39 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-details-container mb-5 mt-md-5">
+                    <p class="mb-0"><strong>Title:</strong> {{ product.name }}</p>
+                    <p class="mb-0"><strong>Artist:</strong> {{ product.artist }}</p>
+                    <p class="mb-0"><strong>Price:</strong> £{{ product.price }}</p>
+                    <p class="mb-0"><strong>Genre:</strong> {{ product.genre.friendly_name }}</p>
+                    <p class="mb-0"><strong>Release Year:</strong> {{ product.release_year }}</p>
+                    <p class="mb-0"><strong>Label:</strong> {{ product.record_label }}</p>
+                    <p class="mb-0"><strong>Catalogue Number:</strong> {{ product.sku }}</p>
+                    <hr>
+                    <p class="mt-3"><strong>Description:</strong> {{ product.description }} 
+                        <hr>
+                        <p class="mt-3"> <strong>Vinyl LP:</strong> 12'' Record / Full-Colour Label / Full-Colour Sleeve.</p>
+                    </p>
+                    
 
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
