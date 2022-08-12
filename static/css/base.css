@@ -231,6 +231,10 @@ a.genre-badge > span.badge:hover {
   color: white;
 }
 
+.update-link,
+.remove-item {
+  cursor: pointer;
+}
 
 
 /* Media Queries */

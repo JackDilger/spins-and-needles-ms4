@@ -46,7 +46,30 @@
                                 <p class="mt-3"><strong>Quantity:</strong></p>
                                 <div class="form-group w-50">
                                     <div class="input-group">
-                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                        <select class="form-control form-select mx-auto" name="quantity"
+                                        data-product_id="{{ item.product.id }}"
+                                        id="id_qty_{{ item.product.id }}">
+                                        <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1
+                                        </option>
+                                        <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2
+                                        </option>
+                                        <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3
+                                        </option>
+                                        <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4
+                                        </option>
+                                        <option value="5" {% if item.quantity == 5 %}selected{% endif %}>5
+                                        </option>
+                                        <option value="6" {% if item.quantity == 6 %}selected{% endif %}>6
+                                        </option>
+                                        <option value="7" {% if item.quantity == 7 %}selected{% endif %}>7
+                                        </option>
+                                        <option value="8" {% if item.quantity == 8 %}selected{% endif %}>8
+                                        </option>
+                                        <option value="9" {% if item.quantity == 9 %}selected{% endif %}>9
+                                        </option>
+                                        <option value="10" {% if item.quantity == 10 %}selected{% endif %}>10
+                                        </option>
+                                    </select>
                                     </div>
                                 </div>
                             </div>
