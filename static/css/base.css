@@ -195,6 +195,27 @@ a.genre-badge > span.badge:hover {
   background-color: #ff914d;
 }
 
+.keep-shopping-btn {
+  background-color: black;
+}
+
+.keep-shopping-btn:hover {
+  background-color: #ff914d;
+}
+
+#keep-shopping-icon-detail:hover {
+  color: white;
+}
+
+.add-to-bag-btn {
+  background-color: black;
+}
+
+.add-to-bag-btn:hover {
+  background-color: #ff914d;
+}
+
+
 /* Media Queries */
 @media (max-width: 425px) {
   .gallery-sm-img {
