@@ -194,3 +194,32 @@ a.genre-badge > span.badge:hover {
 .gallery-btn:hover {
   background-color: #ff914d;
 }
+
+
+
+/* Media Queries */
+@media (max-width: 425px) {
+  .gallery-sm-img {
+      height: 100px;
+      margin-bottom: 10px;
+  }
+
+  .gallery-lg-img {
+      height: 210px;
+  }
+
+  .gallery-header {
+      font-size: 1.7rem;
+  }
+
+  .gallery-sub-header {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .gallery-header {
+      font-size: 2.2rem;
+  }
+}
+
