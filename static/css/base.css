@@ -215,6 +215,19 @@ a.genre-badge > span.badge:hover {
   background-color: #ff914d;
 }
 
+.secure-checkout-btn {
+  background-color: black;
+}
+
+.secure-checkout-btn:hover {
+  background-color: #ff914d;
+}
+
+#secure-checkout-icon:hover {
+  color: white;
+}
+
+
 
 /* Media Queries */
 @media (max-width: 425px) {
