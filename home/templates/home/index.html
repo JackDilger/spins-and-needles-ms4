@@ -10,26 +10,54 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid" id="home-container">
-    <div class="d-flex flex-row flex-wrap justify-content-center">
-        <div class="d-flex flex-column">
-            <img src="{{ MEDIA_URL }}home-img-8.avif" alt="neon spinning vinyl record" class="img-fluid">
-            <img src="{{ MEDIA_URL }}home-img-1.avif" alt="man holding a vinyl record" class="img-fluid">
+<!-- Credit in readme-->
+<div class="container">
+    <div class="row gallery">
+        <div class="col-6 offset-1 image-container">
+            <a href="">
+                <img src="{{ MEDIA_URL }}home-img-4.jpg" alt="Girl browsing vinyl in a record shop" class="gallery-lg-img image">
+            </a>
+            <div class="image-grid-hover">
+                <div>
+                    <h1 class="gallery-header text-black">ESSENTIAL PICKS</h1>
+                    <span class="gallery-sub-header">The hottest records right here</span>
+                    <div class="mt-2">
+                        <a href="" class="btn btn-sm gallery-btn text-white">Shop now</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="d-flex flex-column">
-            <img src="{{ MEDIA_URL }}home-img-4.avif" alt="girl sitting down looking at vinyl recrord" class="img-fluid">
-            <img src="{{ MEDIA_URL }}home-img-5.avif" alt="hand picking out a vinyl recrord from a shelf of records" class="img-fluid scale">
+        <div class="col-4">
+                <a href="">
+                    <img src="{{ MEDIA_URL }}img-gallery-4.jpg" alt="A stack of vinyl records propt up by headphones" class="gallery-sm-img">
+                </a>
+                <a href="">
+                    <img src="{{ MEDIA_URL }}img-gallery-5.jpg" alt="People shopping in a record store" class="gallery-sm-img">
+                </a>
         </div>
-        
-        <div class="d-flex flex-column">
-            <img src="{{ MEDIA_URL }}home-img-6.avif" alt="stacked vinyl recrords in a row" class="img-fluid scale mb-2">
-            <img src="{{ MEDIA_URL }}home-img-3.avif" alt="dj playing on vinyl"  class="img-fluid">
+    </div>
+    <div class="row gallery">
+        <div class="col-4 offset-1">
+            <a href="">
+                <img src="{{ MEDIA_URL}}img-gallery-6.jpg" alt="People dancing" class="gallery-sm-img">
+            </a>
+            <a href="">
+                <img src="{{ MEDIA_URL }}img-gallery-2.jpg" alt="A dj playing vinyl records" class="gallery-sm-img">
+            </a>
         </div>
-        
-        <div class="d-flex flex-column">
-            <img src="{{ MEDIA_URL }}home-img-2.avif" alt="2 neon vinyl recrords " class="img-fluid m-1 p-1">
-              <img src="{{ MEDIA_URL }}home-img-7.avif" alt="vinyl recrord shop" class="img-fluid image m-1 p-1">
+        <div class="col-6 image-container">
+            <a href="">
+                <img src="{{ MEDIA_URL }}img-gallery-3.jpg" alt="Neon sign that reads 'music for the people'" class="gallery-lg-img image">
+            </a>
+            <div class="image-grid-hover">
+                <div>
+                    <h1 class="gallery-header text-black">LETS DANCE</h1>
+                    <span class="gallery-sub-header text-black">Come check out our events</span>
+                    <div class="mt-2">
+                        <a href="" class="btn btn-sm gallery-btn text-white">Lets go</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
