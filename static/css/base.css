@@ -60,7 +60,6 @@ img {
     font-family: 'Squada One', cursive;
 }
 
-
 /* stroke- main nav */
 nav.stroke ul li a {
   position: relative;
@@ -195,8 +194,6 @@ a.genre-badge > span.badge:hover {
 .gallery-btn:hover {
   background-color: #ff914d;
 }
-
-
 
 /* Media Queries */
 @media (max-width: 425px) {
