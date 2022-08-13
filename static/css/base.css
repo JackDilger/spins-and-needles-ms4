@@ -231,6 +231,14 @@ a.genre-badge > span.badge:hover {
   color: white;
 }
 
+#keep-shopping-icon-bag-empty {
+  color: white;
+}
+
+#keep-shopping-icon-bag {
+  color: white;
+}
+
 .update-link,
 .remove-item {
   cursor: pointer;
