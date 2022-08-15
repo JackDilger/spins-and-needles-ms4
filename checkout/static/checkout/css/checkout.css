@@ -6,6 +6,10 @@
     color: white;
 }
 
+#keep-shopping-icon-checkout-success:hover {
+    color: white;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
