@@ -15,12 +15,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Checkout</h2>
+                <h1 class="mb-4">Checkout</h1>
                 <hr>
             </div>
         </div>
@@ -52,7 +51,7 @@
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 small text-muted">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -64,9 +63,9 @@
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total | floatformat:2 }}</p>
-                        <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -109,27 +108,34 @@
                     </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
-						<a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
-							<span class="icon">
-								<i class="fas fa-chevron-left"></i>
+						<a href="{% url 'view_bag' %}" class="btn keep-shopping-btn text-white rounded-0 btn-lg">
+							<span>
+								<i id="adjust-bag-icon" class="fa-regular fa-hand-point-left"></i>
 							</span>
-							<span class="font-weight-bold">Adjust Bag</span>
+							<span class="text-uppercase">Adjust Bag</span>
 						</a>
-						<button id="submit-button" class="btn btn-black rounded-0">
-							<span class="font-weight-bold">Complete Order</span>
-							<span class="icon">
-								<i class="fas fa-lock"></i>
+						<button id="submit-button" class="btn secure-checkout-btn text-white rounded-0 btn-lg">
+							<span class="text-uppercase">Complete Order</span>
+							<span>
+								<i id="complete-order-icon" class="fas fa-lock"></i>
 							</span>
 						</button>
 						<p class="small text-danger my-0">
-							<span class="icon">
+							<span>
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+							<span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
 						</p>
 					</div>
                 </form>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
