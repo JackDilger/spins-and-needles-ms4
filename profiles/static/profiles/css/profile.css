@@ -22,3 +22,8 @@
 .update-information-btn:hover {
     background-color: #ff914d;
 }
+
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}

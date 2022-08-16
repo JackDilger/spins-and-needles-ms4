@@ -14,6 +14,18 @@
     color: #dc3545;
 }
 
+.back-to-profile-btn {
+    background-color: #000;
+}
+
+.back-to-profile-btn:hover {
+    background-color: #ff914d;
+}
+
+#back-to-profile-icon:hover {
+    color: white;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
