@@ -319,7 +319,7 @@ a.genre-badge > span.badge:hover {
 }
 
 .allauth-form-inner-content input {
-  border-color: #000;
+  border-color: black;
   border-radius: 0;
 }
 
@@ -331,26 +331,13 @@ a.genre-badge > span.badge:hover {
   color: #aab7c4;
 }
 
-.all-auth-btn,
-.allauth-form-inner-content button,
-.allauth-form-inner-content input[type='submit'] {
-display: inline-block;
-  font-weight: 400;
-  color: #fff;
-  background-color: #000;
-  text-align: center;
-  vertical-align: middle;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0;
+.all-auth-btn {
+  background-color: black;
+  text-transform: uppercase;
 }
 
-.all-auth-btn:hover,
-.allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
+.all-auth-btn:hover{	
   background-color:#ff914d;
-  border-color: #ff914d;
 }
 
 .allauth-form-inner-content a {
