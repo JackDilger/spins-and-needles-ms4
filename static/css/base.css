@@ -360,6 +360,22 @@ color: #17a2b8;
   background-color: #ff914d;
 }
 
+.cancel-edit-product-btn {
+  background-color: #000;
+}
+
+.cancel-edit-product-btn:hover {
+  background-color: #ff914d;
+}
+
+.udpate-product-btn {
+  background-color: #000;
+}
+
+.udpate-product-btn:hover {
+  background-color: #ff914d;
+}
+
 /* Media Queries */
 @media (max-width: 425px) {
   .gallery-sm-img {
