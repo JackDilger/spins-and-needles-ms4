@@ -344,7 +344,21 @@ a.genre-badge > span.badge:hover {
 color: #17a2b8; 
 }
 
+.cancel-add-product-btn {
+  background-color: #000;
+}
 
+.add-product-btn {
+  background-color: #000;
+}
+
+.cancel-add-product-btn:hover {
+  background-color: #ff914d;
+}
+
+.add-product-btn:hover {
+  background-color: #ff914d;
+}
 
 /* Media Queries */
 @media (max-width: 425px) {
