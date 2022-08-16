@@ -376,6 +376,22 @@ color: #17a2b8;
   background-color: #ff914d;
 }
 
+.edit-btn {
+  background-color: #000;
+}
+
+.delete-btn {
+  background-color: #000;
+}
+
+.delete-btn:hover {
+  background-color: #dc3545;
+}
+
+.edit-btn:hover {
+  background-color: #007bff;
+}
+
 /* Media Queries */
 @media (max-width: 425px) {
   .gallery-sm-img {
