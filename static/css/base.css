@@ -392,6 +392,22 @@ color: #17a2b8;
   background-color: #007bff;
 }
 
+.rewind-btn {
+  background-color: black;
+}
+
+.rewind-btn:hover {
+  background-color: #ff914d;
+}
+
+#sad-face-icon {
+  color: black;
+}
+
+#sad-face-icon:hover {
+  color: black;
+}
+
 /* Media Queries */
 @media (max-width: 425px) {
   .gallery-sm-img {

@@ -28,3 +28,9 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+
+handler400 = 'home.views.bad_request_400'
+handler403 = 'home.views.forbidden_403'
+handler404 = 'home.views.page_not_found_404'
+handler500 = 'home.views.internal_server_500'
