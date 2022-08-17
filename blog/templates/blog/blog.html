@@ -36,15 +36,14 @@
             <div class="post col-lg-6 col-md-12">
                 <div class="content py-5" >
                     <p class="info">
-                        <span><i class="fa fa-user"></i> {{ post.author|upper }}</span> 
-                        <span><i class="fa fa-calendar-alt"></i> {{ post.created_on }}</span>
+                        <span><i class="fa fa-user text-black"></i> {{ post.author|upper }}</span> 
+                        <span><i class="fa fa-calendar-alt text-black"></i> {{ post.created_on }}</span>
                     </p>
                     <a class="text-reset" href="{% url 'post_detail' post.slug %}">
                         <h2>{{ post.title }}</h2>
                     </a>
-                    <p>{{ post.content|truncatechars:180 }}</p>
                     <div class="py-5">
-                        <a href="{% url 'post_detail' post.slug %}" class="btn text-white text-uppercase">Event Details</a>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn text-white text-uppercase event-detail-btn btn-lg">Event Details</a>
                     </div> 
                 </div>
             </div>

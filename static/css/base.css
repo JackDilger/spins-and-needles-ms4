@@ -409,14 +409,18 @@ color: #17a2b8;
 }
 
 
-
-
-
-
 .post-img {
   height: 50vh;
   min-height: 100%;
   width: 100%;
+}
+
+.event-detail-btn {
+  background-color: #000;
+}
+
+.event-detail-btn:hover {
+  background-color: #ff914d;
 }
 
 
