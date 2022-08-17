@@ -420,19 +420,6 @@ color: #17a2b8;
 }
 
 
-.post h2 {
-  font-size: 3.8rem;
-  z-index: 3;
-  cursor: pointer;
-  -webkit-text-fill-color: var(--bg-orange);
-  -webkit-text-stroke-color: var(--nav-bg);
-  -webkit-text-stroke-width: 1.00px; 
-}
-
-.post a:hover{
-  text-decoration: none;
-}
-
 .post .content {
   margin-top: 3rem!important;
 }
@@ -440,7 +427,6 @@ color: #17a2b8;
 .post .info {
   text-transform: uppercase;
   font-size: .7rem;
-
 }
 
 .intro {
@@ -452,7 +438,6 @@ color: #17a2b8;
 }
 
 .post .read {
-  font-family: termina, sans-serif;
   font-weight: 900;
   color: var(--nav-bg);
   text-transform: uppercase;
@@ -460,17 +445,6 @@ color: #17a2b8;
   letter-spacing: 2px;
   text-decoration: none;
 }
-
-.post .read:hover {
-  border-bottom: 3px solid var(--bg-orange);
-}
-
-
-
-
-
-
-
 
 
 
