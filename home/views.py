@@ -5,6 +5,11 @@ def index(request):
 
     return render(request, 'home/index.html')
 
+def about(request):
+    """ A view to return the about page """
+
+    return render(request, 'home/about.html')
+
 
 def bad_request_400(request, exception):
     """ A view to return Custom 400 Error Page """
