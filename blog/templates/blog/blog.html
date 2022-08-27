@@ -9,7 +9,6 @@
     </div>
 {% endblock %}
 
-
 {% block content %}
     <div class="container">
         <div class="row">
@@ -36,8 +35,8 @@
             <div class="post col-lg-6 col-md-12">
                 <div class="content py-5" >
                     <p class="info">
-                        <span><i class="fa fa-user text-black"></i> {{ post.author|upper }}</span> 
-                        <span><i class="fa fa-calendar-alt text-black"></i> {{ post.created_on }}</span>
+                        <span><i class="fa fa-user text-black"></i>{{ post.author|upper }}</span> 
+                        <span><i class="fa fa-calendar-alt text-black"></i> {{ post.event_date }}</span>
                     </p>
                     <a class="text-reset" href="{% url 'post_detail' post.slug %}">
                         <h2>{{ post.title }}</h2>

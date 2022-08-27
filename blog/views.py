@@ -5,7 +5,7 @@ from .models import Post
 def posts(request):
     """ A view for the blog page """
 
-    posts = Post.objects.filter(status=1).order_by('-created_on')
+    posts = Post.objects.filter(status=1).order_by('-event_date')
 
     context = {
         'posts': posts,

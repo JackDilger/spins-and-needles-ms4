@@ -16,12 +16,13 @@ class Post(models.Model):
     image = models.ImageField(null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now= True)
+    event_date = models.DateTimeField(max_length=254, null=False, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
+    event_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    location = models.TextField(null=True, blank=True)
 
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['-event_date']
 
     def __str__(self):
         return self.title
