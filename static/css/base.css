@@ -460,7 +460,9 @@ color: #17a2b8;
   text-decoration: none;
 }
 
-
+footer {
+  font-size: 1.2rem;
+}
 
 /* Media Queries */
 @media (max-width: 425px) {
