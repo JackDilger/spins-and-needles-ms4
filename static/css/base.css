@@ -244,6 +244,12 @@ a.genre-badge > span.badge:hover {
   cursor: pointer;
 }
 
+.bag-total-text,
+.grand-total-text {
+  font-size: 1.5rem;
+}
+
+
 /* Toast Credit  */
 
 .message-container {
