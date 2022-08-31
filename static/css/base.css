@@ -471,6 +471,7 @@ footer {
   padding: 20px;
 }
 
+
 /* Media Queries */
 @media (max-width: 425px) {
   .gallery-sm-img {
