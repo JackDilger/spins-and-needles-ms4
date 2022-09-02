@@ -37,6 +37,7 @@
                     <p class="info">
                         <span><i class="fa fa-user text-black"></i>{{ post.author|upper }}</span> 
                         <span><i class="fa fa-calendar-alt text-black"></i> {{ post.event_date }}</span>
+                        <span><i class="fas fa-comment text-black"></i> {{ post.comments.count }}</span>
                     </p>
                     <a class="text-reset" href="{% url 'post_detail' post.slug %}">
                         <h2>{{ post.title }}</h2>

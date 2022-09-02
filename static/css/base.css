@@ -471,6 +471,18 @@ footer {
   padding: 20px;
 }
 
+.add-comment-btn {
+  background-color: #000;
+  border-radius: 2px;
+}
+
+.add-comment-btn:hover {
+  border-color: white;
+}
+
+#user-comment-icon:hover {
+  color: black;
+}
 
 /* Media Queries */
 @media (max-width: 425px) {

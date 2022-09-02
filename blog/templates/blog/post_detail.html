@@ -39,6 +39,52 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+            	<div class="row">
+            		<div class="col col-md-8 offset-md-2 mt-3">
+                        <div class="card">
+            			    <div class="card-body">
+                                {% if comments.count > 0 %}
+            				        <h1 class="text-center text-uppercase">Comments</h1>
+                                    <hr>
+                                {% else %}
+                                    <p class="mt-5 text-center">There are no comments on this post yet! Would you like to add yours?</p>
+                                {% endif %}
+            				    {% for comment in comments %}
+            				    <div class="comments text-center" style="padding: 10px">
+            					    <p class="font-weight-bold">
+                                        <span><i class="fa fa-user text-black" id="user-comment-icon"></i> {{ comment.name | upper}}</span>
+            						    <span class="font-weight-normal">
+                                            {{ comment.created_on }}
+                                        </span>
+            					    </p>
+            					    {{ comment.body | linebreaks }}
+            					    <hr />
+            				    </div>
+            				    {% endfor %}
+            				{% if new_comment %}
+            				    <div class="alert alert-success text-center" role="alert">
+            				    	Your comment is awaiting moderation
+            				    </div>
+            				{% else %}
+            			        <h4 class="text-center pt-5">Leave a comment</h4>
+            			        <div class="comments pt-5 text-center" style="padding: 10px">
+            			        <form method="post">
+                                    {% csrf_token %}
+                                    {% for field in comment_form %}
+                                        {{ field | as_crispy_field }}
+                                    {% endfor %}
+            			        	<button type="submit" class="btn text-white text-uppercase add-comment-btn rounded">
+                                        Submit Comment
+                                    </button>
+            			        </form>
+            				{% endif %}
+            				    </div>
+            			    </div>
+            		    </div>
+            	    </div>
+                </div>
+            </div>
             <div class="col-12 text-center pt-5 mb-4">
                 <a href="{% url 'blog' %}" class="btn text-white text-uppercase back-to-events-btn btn-lg">
                     <span><i class="fa-solid fa-hand-point-left" id="back-to-events-icon"></i></span>
