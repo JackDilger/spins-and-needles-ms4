@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-uclrh6&3984&4*q*qr+rw5+89rhq-ymjumcxed-9w=157tj(y=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spins-and-needles.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -109,7 +109,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
@@ -122,17 +122,17 @@ WSGI_APPLICATION = 'spins_and_needles.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-#DATABASES = {
-#    'default': dj_database_url.parse('postgres://ruglxnnuphxvon:aab1694c86fd397f6a39dda90ed22fbf4f6530a662049e8e0680d6ca47904700@ec2-54-77-40-202.eu-west-1.compute.amazonaws.com:5432/d7rrjj1uj598qo')
-#}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
