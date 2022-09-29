@@ -518,6 +518,16 @@ footer {
   }
 }
 
+@media (max-width: 413px) {
+  .top-header-icon-text {
+      font-size: 0.8rem;
+  }
+}
 
+@media (max-width: 375px) {
+  .top-header-icon-text {
+      font-size: 0.7rem;
+  }
+}
 
 
