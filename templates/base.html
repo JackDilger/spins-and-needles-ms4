@@ -98,6 +98,9 @@
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
+                <a href="{% url 'home' %}" class="nav-link main-logo-link navbar-brand d-lg-none">
+                    <img src="{{ MEDIA_URL }}sandn-logo.jpg" alt="logo" id="logo" class="d-inline-block align-middle mr-2">
+                </a>
             </nav>
         </div>
         <div id="delivery-banner" class="row text-center">
