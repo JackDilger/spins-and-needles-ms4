@@ -508,6 +508,16 @@ footer {
   .gallery-header {
       font-size: 2.2rem;
   }
+
+  .image-container .image {
+      opacity: 0.4;
+  }
+    
+  .image-container .image-grid-hover {
+      opacity: 1;
+  }
 }
+
+
 
 
