@@ -2,6 +2,14 @@
     color: white;
 }
 
+.adjust-bag-btn {
+    background-color: black;
+}
+
+.adjust-bag-btn:hover {
+    background-color: #ff914d;
+  }
+
 #complete-order-icon:hover {
     color: white;
 }
@@ -92,3 +100,9 @@ select option[value=""] {
     margin: 0;
     height: 100%;
 }
+
+@media (max-width: 436px) {
+    .adjust-bag-btn {
+        margin-bottom: 10px;
+    }
+  }

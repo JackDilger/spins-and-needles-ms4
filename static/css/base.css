@@ -524,6 +524,18 @@ footer {
   }
 }
 
+@media screen {
+  
+}
+.keep-shopping-btn {
+  background-color: black;
+}
+
+@media (max-width: 490px) {
+  .keep-shopping-btn {
+      margin-bottom: 10px;
+  }
+}
 
 
 
