@@ -524,7 +524,7 @@ footer {
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 379px) {
   .top-header-icon-text {
       font-size: 0.7rem;
   }
