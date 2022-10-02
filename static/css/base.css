@@ -348,7 +348,6 @@ a.genre-badge > span.badge:hover {
 }
 
 .allauth-form-inner-content a {
-  font-weight:bold;
   color: black;
 }
 
