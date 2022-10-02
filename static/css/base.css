@@ -323,7 +323,6 @@ a.genre-badge > span.badge:hover {
 
 .allauth-form-inner-content p {
   margin-top: 1.5rem;
-  color: #6c757d; 
 }
 
 .allauth-form-inner-content input {
@@ -349,7 +348,8 @@ a.genre-badge > span.badge:hover {
 }
 
 .allauth-form-inner-content a {
-color: #17a2b8; 
+  font-weight:bold;
+  color: black;
 }
 
 .cancel-add-product-btn {
