@@ -27,3 +27,7 @@
     max-height: 416px;
     overflow-y: auto;
 }
+
+.text-black {
+    color: black;
+}
