@@ -2,32 +2,31 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container header-container">
-        <div class="row justify-content-center">
-            <div class="col s12 m8 offset-m2 mt-3">
-                <div class="card text-center">
-                    <div class="card-header">
-                      ERROR 404
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Page Not Found</h1>
-                        <p class="card-text">What you were looking for is just not there sorry.</p>
-                        <a href="{% url 'home' %}" class="btn btn-primary text-white text-uppercase rewind-btn"> Rewind</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        <i class="fa-solid fa-face-frown" id="sad-face-icon"></i>
-                    </div>
+<div class="container header-container">
+    <div class="row justify-content-center">
+        <div class="col s12 m8 offset-m2 mt-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    ERROR 404
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">Page Not Found</h1>
+                    <p class="card-text">What you were looking for is just not there sorry.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary text-white text-uppercase rewind-btn"> Rewind</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <i class="fa-solid fa-face-frown" id="sad-face-icon"></i>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
-
