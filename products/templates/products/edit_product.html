@@ -2,51 +2,45 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <hr>
-                <h1 class="mb-4">Product Management</h1>
-                <h2 class="text-muted">Edit a Product</h2>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 text-black" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
-                    <div class="text-right">
-                        <a class="btn text-uppercase text-white cancel-edit-product-btn rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn text-uppercase text-white udpate-product-btn rounded-0" type="submit">Update Product</button>
-                    </div>
-                </form>
-            </div>            
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h1 class="mb-4">Product Management</h1>
+            <h2 class="text-muted">Edit a Product</h2>
+            <hr>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 text-black" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                {% if field.name != 'image' %}
+                {{ field | as_crispy_field }}
+                {% else %}
+                {{ field }}
+                {% endif %}
+                {% endfor %}
+                <div class="text-right">
+                    <a class="btn text-uppercase text-white cancel-edit-product-btn rounded-0" href="{% url 'products' %}">Cancel</a>
+                    <button class="btn text-uppercase text-white udpate-product-btn rounded-0" type="submit">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
+{{ block.super }}
+{% include 'products/includes/image_field_edit_script.js' %}
 {% endblock %}
