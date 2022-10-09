@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('sku',)
 
+
 class GenreAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -23,4 +24,3 @@ class GenreAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Genre, GenreAdmin)
-

@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 STATUS = (
-    (0,"Draft"),
-    (1,"Publish")
+    (0, "Draft"),
+    (1, "Publish")
 )
 
 
@@ -18,7 +18,8 @@ class Post(models.Model):
     content = models.TextField()
     event_date = models.DateTimeField(max_length=254, null=False, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
-    event_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    event_price = models.DecimalField(max_digits=6, decimal_places=2,
+                                      default=0)
     location = models.TextField(null=True, blank=True)
 
     class Meta:
