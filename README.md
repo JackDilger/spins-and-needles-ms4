@@ -56,3 +56,51 @@ One of our main aims throughout was to ensure all customer information was kept 
     2. As the site developer/owner, I want to be able to edit a product with its information to the website
     3. As the site developer/owner, I want to be able to delete a product with its information to the website
     4. As the site developer/owner, I want to be able moderate any event comments.
+
+
+## Layout
+
+***
+
+- I used Balsamiq to structure the layout of my website during the initial design phase.
+- I used Bootstraps built in grid system and CSS media queries to make my site responsive across all devices.
+
+### Home page wireframe
+
+![Home](documentation/readme_images/home-wireframe.JPG)
+
+### Products(Shop) wireframe
+
+![Products](documentation/readme_images/products-wireframe.JPG)
+
+### Product Detail wireframe
+
+![Product Detail](documentation/readme_images/product-detail-wireframe.JPG)
+
+### Events wireframe
+
+![Events](documentation/readme_images/events-wireframe.JPG)
+
+### Event Detail wireframe
+
+![Event Detail](documentation/readme_images/event-details-wireframe.JPG)
+
+### Bag wireframe
+
+![Bag](documentation/readme_images/bag-wireframe.JPG)
+
+### Checkout wireframe
+
+![Checkout](documentation/readme_images/checkout-wireframe.JPG)
+
+### Login wireframe
+
+![Login](documentation/readme_images/log-in-wireframe.JPG)
+
+### Register wireframe
+
+![Register](documentation/readme_images/register-wireframe.JPG)
+
+### Profile wireframe
+
+![Profile](documentation/readme_images/profile-wireframe.JPG)
