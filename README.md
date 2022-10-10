@@ -205,11 +205,13 @@ One of our main aims throughout was to ensure all customer information was kept 
 
   ![Register](documentation/readme_images/register-live-site.JPG)
 
+
 - __Log in- Links to user story 15__
   - Users can access their existing profile information by logging in to the site.
   - The login form is easily accessed through the my account drop down section of the main navigation bar.
 
   ![Login](documentation/readme_images/login-live-site.JPG)
+
 
 - __Log Out- Links to user story 14__
   - Logged in users can easily log out at any time.
@@ -217,11 +219,14 @@ One of our main aims throughout was to ensure all customer information was kept 
 
   ![Logout](documentation/readme_images/logout-live-site.JPG)
 
+
 - __Product Management- Links to site owner goal 1__
   - The product management page is only accessible by approved super users, it can be accessed through the my account section of the main navigation bar.
   - This page allows the site admin to add new products directly into the site.
 
+
   ![Product Managment](documentation/readme_images/product-managment-live-site.JPG)
+
 
 - __Edit Product- Links to site owner goal 2__
   - Approved super users can edit any product, the edit option is displayed on each product when the admin is logged in.
@@ -229,12 +234,20 @@ One of our main aims throughout was to ensure all customer information was kept 
 
   ![Edit Product](documentation/readme_images/edit-product-live-site.JPG)
 
+
 - __Delete Product- Links to site owner goal 3__
   - Approved super users can delete any product, the delete option is displayed on each product when the admin is logged in.
   - The delete button will trigger a modal to open to allow the option to confirm deletion
 
   ![Delete Product](documentation/readme_images/product-delete-edit.JPG)
   ![Delete Modal](documentation/readme_images/delete-modal-live-site.JPG)
+
+- __Moderate Comments- Links to site owner goal 4__
+  - Any comment added to the site must first be approved by a super user.
+  - The admin can moderate all comments by logging in to the [Django Admin](https://spins-and-needles.herokuapp.com/admin/login/?next=/admin/). This will soon be available in product management as part of the sites future development
+  - In the comments section of Django admin there is the option to approve/delete any comment.
+
+  ![Moderate Comment](documentation/readme_images/moderate-comments-admin.jpg)
 
 
 
