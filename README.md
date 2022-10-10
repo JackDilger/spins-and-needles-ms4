@@ -1,6 +1,6 @@
-!<h1 align="center">Spins & Needles</h1>
+<h1 align="center">Spins & Needles</h1>
 
-![Spins & Needles Home Page](wescout/static/images/readme/reponsive-site.JPG)
+![Spins & Needles Home Page](documentation/readme_images/am-i-responsive-readme.JPG)
 
 ## About
 
