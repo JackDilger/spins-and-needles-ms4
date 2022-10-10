@@ -26,3 +26,33 @@ Sales are important but we also aim to build a community of likeminded music lov
 One of our main aims throughout was to ensure all customer information was kept secure, and users can have peace of mind when handling payments safely with us. We understand the importance of safely managing data online, which is why we used several defensive programming features in the app to ensure this was done correctly. 
 
 
+## User Experience (UX)
+
+***
+
+-   ### User stories
+
+    1. As a user, I want to understand the purpose of the website immediately upon opening the site.
+    2. As a user, I want to be able to easily navigate the website. 
+    3. As a user, I want to be able to view a list of all products and add them to my basket.
+    4. As a user, I want to easily view individual product information.
+    5. As a user, I want to be able to search for an item.
+    6. As a user, I want to be able to select the quantity of an item.
+    7. As a user, I want to be able to edit or remove items from my basket.
+    8. As a user, I want to see an overview of items in basket and see the total cost of the order.
+    9. As a user, I want to be able to enter my payment details and securely checkout.
+    10. As a user, I want to get email confirmation when completing an order.
+    11. As a user, I want to be able to register as a user.
+    12. As a user, I want to be able pre save my delivery information to my profile.
+    13. As a user, I want to view my historic orders on my user profile.
+    14. As a user, I want to be able to log out. 
+    15. As a user, I want to be able to log in.
+    16. As a user, I want to be able to view upcoming event details.
+    17. As a user, I want to be able engage in the events comments section.
+
+-   ### Site Developer/Owner
+
+    1. As the site developer/owner, I want to be able to add a product with its information to the website
+    2. As the site developer/owner, I want to be able to edit a product with its information to the website
+    3. As the site developer/owner, I want to be able to delete a product with its information to the website
+    4. As the site developer/owner, I want to be able moderate any event comments.
