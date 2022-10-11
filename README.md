@@ -246,13 +246,33 @@ One of our main aims throughout was to ensure all customer information was kept 
   ![Delete Product](documentation/readme_images/product-delete-edit.JPG)
   ![Delete Modal](documentation/readme_images/delete-modal-live-site.JPG)
 
-- __Moderate Comments- Links to site owner goal 4__
+- __Django Admin- Moderate Comments- Manage Events- Links to site owner goal 4 & 5__
   - Any comment added to the site must first be approved by a super user.
   - The admin can moderate all comments by logging in to the [Django Admin](https://spins-and-needles.herokuapp.com/admin/login/?next=/admin/). This will soon be available in product management as part of the sites future development
   - In the comments section of Django admin there is the option to approve/delete any comment.
+  - Only the site approved admin user can access the Django admin to make these changes.
 
   ![Moderate Comment](documentation/readme_images/moderate-comments-admin.jpg)
+  ![Manage Events](documentation/readme_images/manage-events-admin.JPG)
+  ![Django Admin Security](documentation/readme_images/admin-security.JPG)
 
+- __Feedback on actions- Links to site owner goal 1, 2, 3 and User Story 19__
+  - Toast have been used throughout the site to display feedback on actions.
+  - These are used to confirm when a user, logs in/out or registers
+  - They are used to confirm when the admin has edited/deleted/added a product.
+  - They are used if a user tries to access admin only pages.
+  - When a user submits a comment, a message displays explaining their comment is awaiting moderation.
+
+  ![Toast feedback](documentation/readme_images/toast-edit.JPG)
+  ![Toast feedback](documentation/readme_images/error-toast.JPG)
+  ![Toast feedback](documentation/readme_images/toast-sign-in.JPG)
+  ![Comment feedback](documentation/readme_images/comment-add-feedback.JPG)
+
+- __Reset Password- Links to user story 18__
+  - Users can recover or reset the password connected to their log in at any time.
+  - This option is found at the log in screen by clicking the 'Forgotten Password?' link.
+
+  ![Reset Password](documentation/readme_images/reset-password-live-site.JPG)
 
 ## Data Schema
 
