@@ -109,3 +109,93 @@ Here are the automated tests I ran; each test checks the view is rendering the c
 ![Terminal message](documentation/testing_images/test-views-products.JPG)
 
 
+### Accessibility Testing
+
+***
+
+I have used the chrome developer tool extension [Lighthouse](https://web.dev/measure/) to evaluate my sites accessibility. To provide a good user experience lighthouse recommends sites should strive to have a good score (90-100). All pages on the site have a 100% score in lighthouse, the same as shown here on the home page.
+
+![Lighthouse Report](documentation/testing_images/lighthouse-test.JPG)
+
+
+### Browser Testing
+
+***
+
+- I tested the site across multiple browsers which all worked.
+  - Chrome
+  - Safari
+  - Edge
+  - Firefox
+  - Opera
+
+
+### Device Responsiveness Testing
+
+***
+
+- I manually tested the site across different device operating systems which all worked.
+  - The latest version of iOS and iPadOS is 15.5.
+  - The latest version of Android OS 12
+  - Windows PC
+  - MacBook
+
+- I used chrome dev tools to manually test the sites responsiveness across a range of devices which all worked. Devices include:
+  - iphone 5-12
+  - iphone SE
+  - iphone XR
+  - iphone 12 PRO
+  - Pixel 5
+  - Galaxy S8+
+  - Galaxy S20 Ultra
+  - Galaxy A51/71
+  - Galaxy Fold
+  - ipad Air
+  - ipad Mini
+  - Surface Pro 7
+  - Surface Pro Duo
+  - Windows PC
+  - MacBook
+  - Nest Hub
+  - Nest Hub Max
+  
+  ## Images from responsive tests
+
+- Home Page
+![Home responsive](documentation/testing_images/home-responsive.PNG)
+
+- Products Page
+![Products responsive](documentation/testing_images/products-responsive.PNG)
+
+- Products Page
+![Products responsive](documentation/testing_images/product-detail-responsive.PNG)
+
+- Events Page
+![Events responsive](documentation/testing_images/events-responsive.PNG)
+
+- Comments Page
+![Comments responsive](documentation/testing_images/comments-responsive.PNG)
+
+- About Page
+![About responsive](documentation/testing_images/about-responsive.PNG)
+
+- Sign in Page
+![Sign in responsive](documentation/testing_images/sign-in-responsive.PNG)
+
+- Bag Page
+![Bag responsive](documentation/testing_images/bag-responsive.PNG)
+
+- Checkout Page
+![Checkout responsive](documentation/testing_images/checkout-responsive.PNG)
+
+- Product Management Page
+![Product management responsive](documentation/testing_images/product-management-responsive.PNG)
+
+- Profile Page
+![Profile responsive](documentation/testing_images/profile-responsivness.PNG)
+
+- Register Page
+![Register responsive](documentation/testing_images/register-responsivness.PNG)
+
+- Order Confirmation Page
+![Order confirmation responsive](documentation/testing_images/order-confirmation-responsivness.PNG)
