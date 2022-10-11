@@ -1,9 +1,17 @@
 ### Bugs
 
 ***
-- 
+## Resolved Bugs
+- All my initial deployment attempts to Heroku failed- After extensive checks I found the issue to be with the naming of my Procfile. Updating the name from 'procfile' to 'Procfile' resolved this issue and allowed me to successfully deploy.
+- Once my site had been deployed to Heroku the live link was not displaying any of the content or styling. After extensive checks I found the issue to be with the naming of requirements.txt file. There was a double dot which needing removing. Once the file name was correct the issue was resolved.
 
+## Known Bugs
 
+There are some notable bugs that have been left unresolved, these have been found throughout testing and have been noted in the testing section where applicable. 
+
+- The main bug found is with Javascript validation. There are some instances where I could not move JavaScript out of HTML files and into their own script files without breaking the intended functionality. I had attempted several fixes for these issues and did extensive research to try and resolve each of them, but I could not find a solution. All these instances are noted in the relevant areas of the testing section and give exact details of the errors and files they are found in. I had to make the decision to leave these files as they are so the site works as intended.
+
+- The loading spinner found in checkout.html displays on screen whilst payments are processing, this helps give feedback to the user to show the payment is being handled. However, there is an issue with validation caused by an empty heading. This is again an issue I have tried to resolve through research and fix attempts, but I could not find a solution. This instance is fully noted in the testing section. I have made the decision to leave this as is, so to not break the intended functionality. 
 
 
 ### Validator Testing 
@@ -11,7 +19,7 @@
 ***
 
 There were some issues in code validation when trying to separate JavaScript found in HTML files, into their own script files.
-In some instances, the JavaScript has had to have been left in the HTML file, as no solution could be found in moving it and keeping the intended functionality. Where JavaScript could be moved into its own file, there were some further issues now with validating these files. These issues are explained below and are noted in the bugs section for further development.
+In some instances, the JavaScript has been left in the HTML file, as no solution could be found in moving it and keeping the intended functionality. Where JavaScript could be moved into its own file, there were some further issues now with validating these files. These issues are explained below and are noted in the bugs section for further development.
 
 ## CSS Validation
 
