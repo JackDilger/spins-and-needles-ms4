@@ -87,3 +87,25 @@ Security | Can only approved super users add/edit/delete a product? | Pass
 Error Handling | Does the application gracefully handle errors? Can you navigate back to site from an error page? | Pass 
 Error Handling | Users cannot break the site using URL manipulation? | Pass
 Links | There are no broken links, all work as intended | Pass
+
+
+### Automated Testing
+
+***
+
+My automated testing skills are very much still in development themselves. Due to this I decided to focus more so on robust manual testing of the site which covers all bases. I carried out some automated testing, however this is something I intend to explore further in the sites future development given more time. 
+
+Here are the automated tests I ran; each test checks the view is rendering the correct template. These tests have been evidenced through each of their commit messages linked below:
+
+- [Bag App Test](https://github.com/JackDilger/spins-and-needles-ms4/commit/47c915bd209b0f44070f705cce7109b775455e25)
+![Terminal message](documentation/testing_images/test-views-bag.JPG)
+
+
+- [Home App Test](https://github.com/JackDilger/spins-and-needles-ms4/commit/dbe1672fbe05b08b8b87eea77f44aa62ebd78ffc)
+![Terminal message](documentation/testing_images/test-views-home.JPG)
+
+
+- [Products App Test](https://github.com/JackDilger/spins-and-needles-ms4/commit/4b662fe9d615aaf61e8af2b36ccf9cef59072328)
+![Terminal message](documentation/testing_images/test-views-products.JPG)
+
+
