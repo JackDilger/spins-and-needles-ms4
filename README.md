@@ -47,13 +47,17 @@ One of our main aims throughout was to ensure all customer information was kept 
     15. As a user, I want to be able to log in.
     16. As a user, I want to be able to view upcoming event details.
     17. As a user, I want to be able engage in the events comments section.
+    18. As a user, I want to be able to reset the password for my user profile.
+    19. As a user, I want feedback on all actions I make on the site.
 
 -   ### Site Developer/Owner
 
-    1. As the site developer/owner, I want to be able to add a product with its information to the website
-    2. As the site developer/owner, I want to be able to edit a product with its information to the website
-    3. As the site developer/owner, I want to be able to delete a product with its information to the website
-    4. As the site developer/owner, I want to be able moderate any event comments.
+    1. As the site developer/owner, I want to be able to add a product and get confirmation.
+    2. As the site developer/owner, I want to be able to edit a product and get confirmation.
+    3. As the site developer/owner, I want to be able to delete a product and get confirmation.
+    4. As the site developer/owner, I want to be able moderate any event comments in the admin.
+    5. As the site developer/owner, I want to be able to add/edit/delete events in the admin.
+
 
 ## Layout
 

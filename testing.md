@@ -74,10 +74,13 @@ User story 14 | Log out of my user profile | Pass
 User story 15 | Log in to my user profile | Pass
 User story 16 | View upcoming event details | Pass
 User story 17 | Leave a comment on an event post | Pass
-Site Owner Goal 1 | Add a new product on to the site through the product management form | Pass
-Site Owner Goal 2 | Edit an existing product on to the site through the edit product form | Pass
+User story 18 | Reset the password for my user profile | Pass
+User story 19 | Receive feedback on all actions I make on the site | Pass
+Site Owner Goal 1 | Add a new product to the site through product management and get confirmation | Pass
+Site Owner Goal 2 | Edit an existing product on to the site through the edit product form and get confirmation | Pass
 Site Owner Goal 3 | Delete a product using the delete button shown against each product | Pass
 Site Owner Goal 4 | Approve or delete comments in the admin | Pass
+Site Owner Goal 5 | Add/edit/delete events in the admin | Pass
 Responsiveness | Is the application responsive across all devices? | Pass
 Accessibility | Is the application accessible to all users? | Pass 
 Error Handling | Do error handlers function? | Pass
@@ -91,7 +94,7 @@ Full checks against development version | Were all development testing criteria 
 Visual Checks | Are all images of usable resolution, all text unobscured and undistracted foregrounds? | Pass
 Code checked | No errors showing in the code? | Pass (unfixed issues explained in code validation and bugs sections)
 Console errors | No console errors showing? | Pass
-Security | Can only approved super users add/edit/delete a product? | Pass
+Security | Can only approved admin user add/edit/delete a product? Can only the approved admin acccess the Django Admin Portal? | Pass
 Error Handling | Does the application gracefully handle errors? Can you navigate back to site from an error page? | Pass 
 Error Handling | Users cannot break the site using URL manipulation? | Pass
 Links | There are no broken links, all work as intended | Pass
