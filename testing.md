@@ -73,3 +73,17 @@ Site Owner Goal 4 | Approve or delete comments in the admin | Pass
 Responsiveness | Is the application responsive across all devices? | Pass
 Accessibility | Is the application accessible to all users? | Pass 
 Error Handling | Do error handlers function? | Pass
+
+
+## Development Testing
+
+Test            | Outcome                          | Result
+--------------- | -------------------------------- | ------------
+Full checks against development version | Were all development testing criteria still passed once the site was deployed, with no errors showing? | Pass
+Visual Checks | Are all images of usable resolution, all text unobscured and undistracted foregrounds? | Pass
+Code checked | No errors showing in the code? | Pass (unfixed issues explained in code validation and bugs sections)
+Console errors | No console errors showing? | Pass
+Security | Can only approved super users add/edit/delete a product? | Pass
+Error Handling | Does the application gracefully handle errors? Can you navigate back to site from an error page? | Pass 
+Error Handling | Users cannot break the site using URL manipulation? | Pass
+Links | There are no broken links, all work as intended | Pass
