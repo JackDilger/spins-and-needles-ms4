@@ -295,6 +295,19 @@ Please refer to seperate [Testing](testing.md) file for full the full breakdown 
 - [Font Awesome](https://fontawesome.com/) Large database of icons which I used all over the site to add to the visual language.
 
 
+## Credits
+
+***
+
+### Code
+
+- code credit
+
+### Media
+
+- image credits
+
+
 ## Deployment
 
 ***
