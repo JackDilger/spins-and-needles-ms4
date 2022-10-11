@@ -406,10 +406,12 @@ a.genre-badge>span.badge:hover {
 
 .rewind-btn {
     background-color: black;
+    border-color: black;
+    border: 2px solid black;
 }
 
 .rewind-btn:hover {
-    background-color: #ff914d;
+    border-color: #f8f9fa;
 }
 
 #sad-face-icon {
