@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Post, Comment
 
 
+# Credit djangocentral(see readme credits section)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'status', 'event_date')
     list_filter = ("status",)

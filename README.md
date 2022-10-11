@@ -325,12 +325,23 @@ Please refer to seperate [Testing](testing.md) file for full the full breakdown 
 
 ### Code
 
-- code credit
+- Code Institute's Boutique Ado walkthrough project was used throughout as a guide.
+- The image gallery was modified from [codepen](https://codepen.io/ms_yogi/pen/zpEXba)
+- The image gallery hover effect was modified from [w3schools](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade)
+- The quantity dropdown selector was modified from [stackoverflow](https://stackoverflow.com/questions/37559963/how-to-retain-select-option-value-after-submit-in-django)
+- Building the events blog post and comments was inspired by [djangocentral](https://djangocentral.com/building-a-blog-application-with-django/)
+- The main nav and top header modified from [codepen](https://codepen.io/maheshambure21/pen/QwXaRw)
+
+### Content
+
+- Product content from [Rough Trade](https://www.roughtrade.com/)
+- Event content from [Resident Advisor](https://ra.co/clubs/123363)
+- About content from [Eastern Bloc](https://www.easternblocrecords.com/)
 
 ### Media
 
-- image credits
-
+- All images apart from product images were taken from [Unsplash](https://unsplash.com/)
+- Product images were taken from my own/friends record collections.
 
 ## Deployment
 

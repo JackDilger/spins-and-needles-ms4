@@ -68,7 +68,7 @@ img {
     font-family: 'Squada One', cursive;
 }
 
-/* stroke- main nav */
+/* Main nav credit (https://codepen.io/maheshambure21/pen/QwXaRw) */
 nav.stroke ul li a {
     position: relative;
 }
@@ -94,7 +94,7 @@ nav.stroke ul li a:hover:after {
     background-color: #ff914d;
 }
 
-/* stroke- top header */
+/* Top nav credit (https://codepen.io/maheshambure21/pen/QwXaRw) */
 #topnav ul li a {
     position: relative;
 }
@@ -146,7 +146,7 @@ a.genre-badge>span.badge:hover {
     color: #fff !important;
 }
 
-/* Gallery credit in readme */
+/* Image gallery credit ((https://codepen.io/ms_yogi/pen/zpEXba)) */
 .gallery img {
     width: 100%;
     object-fit: cover;
@@ -173,6 +173,7 @@ a.genre-badge>span.badge:hover {
     backface-visibility: hidden;
 }
 
+/* Image gallery hover credit (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade) */
 .image-grid-hover {
     transition: .5s ease;
     opacity: 0;

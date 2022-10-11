@@ -8,6 +8,7 @@ STATUS = (
 )
 
 
+# Credit djangocentral(see readme credits section)
 class Post(models.Model):
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=200, unique=True)

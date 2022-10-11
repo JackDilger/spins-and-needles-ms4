@@ -4,6 +4,7 @@ from .forms import CommentForm
 from profiles.models import UserProfile
 
 
+# Credit djangocentral(see readme credits section)
 def posts(request):
     """ A view for the blog page """
 

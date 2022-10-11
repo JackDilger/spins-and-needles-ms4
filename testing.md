@@ -1,11 +1,12 @@
-### Bugs
+## Bugs
 
 ***
-## Resolved Bugs
+### Resolved Bugs
+
 - All my initial deployment attempts to Heroku failed- After extensive checks I found the issue to be with the naming of my Procfile. Updating the name from 'procfile' to 'Procfile' resolved this issue and allowed me to successfully deploy.
 - Once my site had been deployed to Heroku the live link was not displaying any of the content or styling. After extensive checks I found the issue to be with the naming of requirements.txt file. There was a double dot which needing removing. Once the file name was correct the issue was resolved.
 
-## Known Bugs
+### Known Bugs
 
 There are some notable bugs that have been left unresolved, these have been found throughout testing and have been noted in the testing section where applicable. 
 
