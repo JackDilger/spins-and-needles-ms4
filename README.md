@@ -264,6 +264,9 @@ The above design shows the key relationships between the date stored; I will out
 
 The relationship between an event blog post and a blog comment is a one-to-many relationship meaning many comments can go into 1 post. The design again shows how the blog post primary key is used as a foreign key in the blog comments. Another example of this is shown with products and genres, as many products can go into one genre.
 
+## Testing
+
+***
 
 
-
+Please refer to seperate [Testing](testing.md) file for full the full breakdown on testing.
