@@ -16,9 +16,9 @@ Why Spins & Needles?
 
 This project was born out of my passion for music and when creating an e-commerce store, I wanted to be able to sell products I was personally invested in but would also be a viable revenue stream in a very crowded online market. 
 
-As streaming platforms gradually took offer the market, physical music copies seem to be dying out, but Vinyl has seen a strong resurgence in recent years. Today, about 85% of mainstream music’s sales are vinyl and Last year saw U.S. revenues exceed $1 billion for the first time since the mid-80s. Ever growing interest from younger people has helped drive this, compared to the average buyer of music, buyers of vinyl records are 57% more likely to be aged under 25. Buyers clearly still appreciate the bonus of physical ownership in a world of streaming music. 
+As streaming platforms have gradually taken over the market, physical music copies seem to be dying out, but vinyl has seen a strong resurgence in recent years. Currently, about 85% of mainstream music’s sales are vinyl and last year saw U.S. revenues exceed $1 billion for the first time since the mid-80s. Ever growing interest from younger people has helped drive these figures with 57% of the average buyer being under the age of 25. Considering this, it is apparent that younger people still appreciate the bonus of physical ownership in a world of streaming music. 
 
-Taking all this information in to account I believe targeting the Vinyl market will help us succeed in our main aim of creating a viable revenue stream. Also, with such a large portion of sales coming from the younger age bracket I think that would offer good longevity, as we can maintain a loyal customer base who can grow with the company. 
+Taking all of this information in to account, I believe targeting the Vinyl market will help us succeed in our main aim of creating a viable revenue stream. Also, with such a large portion of sales coming from the younger age bracket I think that would offer good longevity, as we can maintain a loyal customer base who can grow with the company. 
 
 Sales are important but we also aim to build a community of likeminded music lovers who can interact with each other. The events page was a big part of this, offering customers a chance to meet each other and enjoy local and international talent. Adding the comments section will encourage customers to interact and help build that community feel. 
 
@@ -64,7 +64,7 @@ One of our main aims throughout was to ensure all customer information was kept 
 ***
 
 - I used Balsamiq to structure the layout of my website during the initial design phase.
-- I used Bootstraps built in grid system and CSS media queries to make my site responsive across all devices.
+- I used Bootstraps built in grid system and CSS media queries to make my site responsive across all devices during development.
 
 ### Home page wireframe
 
@@ -257,8 +257,8 @@ One of our main aims throughout was to ensure all customer information was kept 
   ![Django Admin Security](documentation/readme_images/admin-security.JPG)
 
 - __Feedback on actions- Links to site owner goal 1, 2, 3 and User Story 19__
-  - Toast have been used throughout the site to display feedback on actions.
-  - These are used to confirm when a user, logs in/out or registers
+  - Toasts have been used throughout the site to display feedback on actions.
+  - These are used to confirm when a user, logs in/out or registers.
   - They are used to confirm when the admin has edited/deleted/added a product.
   - They are used if a user tries to access admin only pages.
   - When a user submits a comment, a message displays explaining their comment is awaiting moderation.
@@ -269,7 +269,7 @@ One of our main aims throughout was to ensure all customer information was kept 
   ![Comment feedback](documentation/readme_images/comment-add-feedback.JPG)
 
 - __Reset Password- Links to user story 18__
-  - Users can recover or reset the password connected to their log in at any time.
+  - Users can reset the password connected to their log in at any time.
   - This option is found at the log in screen by clicking the 'Forgotten Password?' link.
 
   ![Reset Password](documentation/readme_images/reset-password-live-site.JPG)

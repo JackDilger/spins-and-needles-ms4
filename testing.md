@@ -4,7 +4,7 @@
 ### Resolved Bugs
 
 - All my initial deployment attempts to Heroku failed- After extensive checks I found the issue to be with the naming of my Procfile. Updating the name from 'procfile' to 'Procfile' resolved this issue and allowed me to successfully deploy.
-- Once my site had been deployed to Heroku the live link was not displaying any of the content or styling. After extensive checks I found the issue to be with the naming of requirements.txt file. There was a double dot which needing removing. Once the file name was correct the issue was resolved.
+- Once my site had been deployed to Heroku the live link was not displaying any of the content or styling. After extensive checks I found the issue to be with the naming of the requirements.txt file. There was a double dot which needed removing. Once the file name was correct the issue was resolved.
 
 ### Known Bugs
 
@@ -78,7 +78,7 @@ User story 9 | Enter my payment details and securely checkout. | Pass
 User story 10 | Email confirmation triggered when completing an order. | Pass
 User story 11 | Register a user profile | Pass
 User story 12 | Pre save my delivery information to my profile. | Pass
-User story 13 | view my historic orders on my user profile | Pass
+User story 13 | View my historic orders on my user profile | Pass
 User story 14 | Log out of my user profile | Pass
 User story 15 | Log in to my user profile | Pass
 User story 16 | View upcoming event details | Pass
@@ -113,7 +113,7 @@ Links | There are no broken links, all work as intended | Pass
 
 ***
 
-My automated testing skills are very much still in development themselves. Due to this I decided to focus more so on robust manual testing of the site which covers all bases. I carried out some automated testing, however this is something I intend to explore further in the sites future development given more time. 
+My automated testing skills are very much still in development themselves. Due to this I decided to focus more so on robust manual testing of the site which covers all basis. I carried out some automated testing, however this is something I intend to explore further in the sites future development given more time. 
 
 Here are the automated tests I ran; each test checks the view is rendering the correct template. These tests have been evidenced through each of their commit messages linked below:
 
@@ -133,7 +133,7 @@ Here are the automated tests I ran; each test checks the view is rendering the c
 
 ***
 
-I have used the chrome developer tool extension [Lighthouse](https://web.dev/measure/) to evaluate my sites accessibility. To provide a good user experience lighthouse recommends sites should strive to have a good score (90-100). All pages on the site have a 100% score in lighthouse, the same as shown here on the home page.
+I have used the chrome developer tool extension [Lighthouse](https://web.dev/measure/) to evaluate my sites accessibility. To provide a good user experience lighthouse recommends sites should strive to have a good score (90-100). All pages on the site meet this standard, the same as shown below on the home page.
 
 ![Lighthouse Report](documentation/testing_images/lighthouse-test.JPG)
 
