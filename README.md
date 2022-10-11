@@ -274,6 +274,12 @@ One of our main aims throughout was to ensure all customer information was kept 
 
   ![Reset Password](documentation/readme_images/reset-password-live-site.JPG)
 
+- __Error Handlers__
+  - Error handlers have been set up to ensure any internal errors are handled correctly.
+  - If an error occurs users will be directed to the custom error page and be provided with a link back to the site.
+
+  ![Error Page](documentation/readme_images/error-live-site.JPG)
+
 ## Data Schema
 
 ***
