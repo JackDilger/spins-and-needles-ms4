@@ -517,3 +517,12 @@ Please refer to seperate [Testing](testing.md) file for full the full breakdown 
 - Add all your media files
 - in 'Manage Public Permission' section, select 'grant public read access to these objects'
 - Upload
+
+## Acknowledgements
+
+***
+
+- Joe & Chris from South Devon College for the continued support and feedback throughout.
+- Code institute tutors for getting me out of a whole with my deployment issues.
+- Myself for making it this far and producing a project I am happy with.
+- Millie my girlfriend for putting up with my mood swings throughout development and offering much needed encouragement to begin the course and complete it.
