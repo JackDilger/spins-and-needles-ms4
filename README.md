@@ -250,5 +250,20 @@ One of our main aims throughout was to ensure all customer information was kept 
   ![Moderate Comment](documentation/readme_images/moderate-comments-admin.jpg)
 
 
+## Data Schema
+
+***
+
+![Schema](documentation/readme_images/schema-design.JPG)
+
+The above shows the database design followed when building this site, a relational database was used with the PostgreSQL option in Heroku.
+
+[Django Allauth](https://pypi.org/project/django-allauth/) was integrated in to the site to make use of their built in authentication system.
+
+The above design shows the key relationships between the date stored; I will outline some examples shown. The user and the user profile is a 1 to 1 relationship, only 1 user profile is permitted per user. The design also shows how the user primary key is used as a foreign key in the user profile.
+
+The relationship between an event blog post and a blog comment is a one-to-many relationship meaning many comments can go into 1 post. The design again shows how the blog post primary key is used as a foreign key in the blog comments. Another example of this is shown with products and genres, as many products can go into one genre.
+
+
 
 
