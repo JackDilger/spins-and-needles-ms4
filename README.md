@@ -270,3 +270,26 @@ The relationship between an event blog post and a blog comment is a one-to-many 
 
 
 Please refer to seperate [Testing](testing.md) file for full the full breakdown on testing.
+
+## Technologies used
+
+***
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)- Markup language.
+- [CSS3](https://en.wikipedia.org/wiki/CSS)- Style sheet language.
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)-  Programming language used to add interactivity to the homepage and implement the logic required to make the app work.
+- [Python](https://en.wikipedia.org/wiki/JavaScript)- Backend language used to control the logic on the site.
+- [POSTGRESQL](https://en.wikipedia.org/wiki/JavaScript)- Relational Database.
+- [Amazon Web Services](https://aws.amazon.com/?nc2=h_lg)- S3 bucket used to host static/media files.
+- [stripe](https://stripe.com) - Handles secure payments
+- [Django](https://en.wikipedia.org/wiki/Django_(web_framework)) - Used as the framework for the site.
+- [Heroku](https://id.heroku.com/login) - Used to deploy and host the live site.
+- [Balsamiq](https://balsamiq.com/)- Used to build wireframes.
+- [Google Fonts](https://fonts.google.com/)- Sourced the website fonts.
+- [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)- Used to troubleshoot problems with code.
+- [Unsplash](https://unsplash.com/photos/1fZC2rYbpsU)- Sourced background image.
+- [Gitpod](https://gitpod.io/workspaces)- Integrated development environment (IDE)  Used to write all my code.
+- [Git](https://git-scm.com/)- Used for version control.
+- [Github](https://github.com/)- Used to host my repository.
+- [Beautifier](https://beautifier.io/)- Used to organise code consistently.
+- [Font Awesome](https://fontawesome.com/) Large database of icons which I used all over the site to add to the visual language.
