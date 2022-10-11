@@ -293,3 +293,173 @@ Please refer to seperate [Testing](testing.md) file for full the full breakdown 
 - [Github](https://github.com/)- Used to host my repository.
 - [Beautifier](https://beautifier.io/)- Used to organise code consistently.
 - [Font Awesome](https://fontawesome.com/) Large database of icons which I used all over the site to add to the visual language.
+
+
+## Deployment
+
+***
+
+### Creating The Heroku App
+
+- Register/login on Heroku.
+- Click 'New' > 'Create new app'.
+- Give the app a name.
+- Select the region closest to you.
+
+### Setting up Postgres Database
+
+- On your Heroku app:
+
+- Select 'Resources' tab.
+
+- Search and select 'Heroku Postgres' add-on.
+
+- In your work environment:
+
+- install dj_database_url and psycopg2-binary and update requirements.txt file
+
+- In settings.py:
+
+- import dj_database_url
+
+- Temporarily change your default DATABASES config to: 'default': dj_database_url.parse( YOUR_DATABASE_URL ) using the database URL from your Heroku app config vars. After you apply the migrations, change DATABASES config back, so your database doesn’t end up in version control
+
+- Apply migrations to new database using migrate command in the terminal.
+
+- Create a superuser using createsuperuser command in the terminal.
+
+- In settings.py:
+
+- Connect your project to the postgres database for the live site, and your default database for version control, using the config variable from Heroku by adding if 'DATABASE_URL' in os.environ: DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))} else: before your default database settings
+
+- Install gunicorn and update requirements.txt file.
+
+- Create Procfile and add web: gunicorn <YOUR_APP_NAME>.wsgi:application
+
+- Temporarily add DISABLE_COLLECTSTATIC to Heroku config vars with value of 1 so Heroku doesn’t try to collect static files when you deploy
+
+- in serrings.py:
+
+- add hostname of your Heroku app to ALLOWED_HOSTS
+
+- Add and commit your changes, then push to Heroku (I used Gitpod so the command was git push Heroku main)
+
+### Setting Up Automatic Deployment From Gitpod
+
+- in Heroku app:
+
+- Select the 'Deploy' tab:
+
+- Choose your deployment method i.e. Gitpod
+
+- Search for your repository
+
+- Click connect
+
+- Enable automatic deploy
+
+### Creating An Account With Amazon Web Services
+
+- Go to AWS website and click 'Create an account'
+
+- Fill in the details and click 'Continue'
+
+- Select 'Personal' account type and fill out details then click 'Create Account and Continue'
+
+- Fill out the credit card details, which will be charged if you go over the free usage limit
+
+- Sign into your new account
+
+### Creating an S3 Bucket 
+
+- Buckets are used to store files for your live site.
+
+- On dashboard, search and open S3
+
+- In Amazon s3:
+
+- Create a new bucket
+- Fill in details
+- Uncheck 'block all public access'
+- Check 'Acknowledge bucket will be public'
+- Click 'Create bucket'
+- In your new bucket:
+- On 'Properties' tab:
+- Select 'Static website hosting'
+- Check 'Use this bucket to host a website' and fill in default values then click 'Save'
+- On 'Permissions' tab:
+- Go to 'CORS configuration' section and paste: [{ "AllowedHeaders": ["Authorization"],"AllowedMethods": ["GET"],"AllowedOrigins": ["*"],"ExposeHeaders": []}]
+- Go to 'Bucket Policy' section
+- Click 'Policy generator' to create a security policy for the bucket
+- Select 'S3 Bucket Policy' for Type of Policy
+- Enter * in the 'Principal' sections to allow all principals
+- Select GetObject in 'Actions' section
+- Copy ARN (amazon resource name) from 'Bucket Policy' tab and past into ARN box on Policy   Generator tab
+- Click 'Add Statement' > 'Generate Policy'
+- Copy and paste th policy into the 'bucket policy editor'
+- On the end of 'Resource key' section of the policy add /* to allow access to all resources in the bucket
+- Click 'Save'
+
+### Creating An IAM User
+
+- This is used to access your bucket, you will create a group for the user, create an access policy so the group can access you bucket, then assign the user to the group so it can use the policy to access all your files
+
+- On AWS dashboard search and open IAM
+
+- On IAM dashboard:
+
+- On 'Groups' tab:
+- Click 'Create New Group', give it a name, then click next till you come to 'Create Group'
+- On 'Policies' tab:
+- Click 'Create Policy'
+- Go to 'JSON' tab
+- Click 'import managed policy'
+- Search for S3, and import the pre-built 's3 full access' policy
+- Get your bucket ARN and paste it twice; once as it is, and once with /* at the end, after "Resource": and in square brackets: [ "<YOUR_BUCKET_ARN>", "<YOUR_BUCKET_ARN>/*" ]
+- Click 'Review policy'
+- Give it a name and description
+- Click 'Create Policy'
+- On 'Groups' tab:
+- Select your bucket
+- Click 'Attach Policy'
+- Search, select and attach your newly created policy
+- On 'Users' tab:
+- Click 'Add User'
+- Create a user for your static files
+- Check 'Programatic access' box
+- Click 'Next' to go to permissions page
+- Check the box to select the group you just made
+- Click next untill you reach 'Create User'
+- Download and save the CSV file by clicking 'Download CSV'. This will contain the users access key and secret access key Once you leave the page you will not be able to return and download the file again
+
+### Connect Django to S3
+
+- In you workspace terminal, install boto3 and django-storages then add to requirements.txt file
+
+- In settings.py:
+
+- Add storages to installed apps
+- Add if 'USE_AWS' in os.environ: AWS_STORAGE_BUCKET_NAME = '<YOUR_BUCKET_NAME>' - AWS_S3_REGION_NAME = ''<YOUR_BUCKET_REGION>' AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY') AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+- In Heroku config vars:
+
+- Add 'USE_AWS' = True, 'AWS_ACCESS_KEY_ID' and 'AWS_SECRET_ACCESS_KEY' variables from the CSV file you downloaded
+- Remove 'Disable_COLLECTSTATIC' variable
+
+- Create 'custom_storages.py' file
+
+- Add from django.conf import settings and from storages.backends.23boto3 import s3Boto3Storage
+- Add a new class for Static files and one for Media files:
+- class StaticStorage(S3Boto3Storage): location = settings.STATICFILES_LOCATION
+- class MediaStorage(S3Boto3Storage): location = settings.MEDIAFILES_LOCATION
+
+- Commit your changes and push them to Heroku
+
+- Your S3 bucket should now have a 'static' folder in it with all your static files
+
+- In your bucket:
+
+- Add folder called 'media'
+- Add all your media files
+- in 'Manage Public Permission' section, select 'grant public read access to these objects'
+- Upload
