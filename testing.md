@@ -38,6 +38,38 @@ below on how I used this tool:
 - Select pycodestyle from the list.
 - PEP8 errors will now be underlined in red, as well as being listed in the PROBLEMS tab beside your terminal.
 
- 
 
+### Manual Testing
 
+***
+
+## Development Testing
+
+Test            | Outcome                          | Result
+--------------- | -------------------------------- | ------------
+Navigation Bar | Do all links navigate to the correct page? | Pass 
+Buttons | Does all buttons function as intended? | Pass
+User Story 1 | Company logo and image gallery with supported text display on home page | Pass
+User story 2 | All site navigation links take you to the intended page | Pass
+User Story 3 | View full list of products & add them to the shopping bag | Pass
+User story 4 | Clicking product images displays individual product information | Pass
+User story 5 | To be able to search for an item | Pass
+User story 6 | Select the quantity of an item to buy | Pass
+User story 7 | Edit or remove a product from the shopping bag | Pass
+User story 8 | View all items in the shopping bag with the total cost of the order. | Pass
+User story 9 | Enter my payment details and securely checkout. | Pass
+User story 10 | Email confirmation triggered when completing an order. | Pass
+User story 11 | Register a user profile | Pass
+User story 12 | Pre save my delivery information to my profile. | Pass
+User story 13 | view my historic orders on my user profile | Pass
+User story 14 | Log out of my user profile | Pass
+User story 15 | Log in to my user profile | Pass
+User story 16 | View upcoming event details | Pass
+User story 17 | Leave a comment on an event post | Pass
+Site Owner Goal 1 | Add a new product on to the site through the product management form | Pass
+Site Owner Goal 2 | Edit an existing product on to the site through the edit product form | Pass
+Site Owner Goal 3 | Delete a product using the delete button shown against each product | Pass
+Site Owner Goal 4 | Approve or delete comments in the admin | Pass
+Responsiveness | Is the application responsive across all devices? | Pass
+Accessibility | Is the application accessible to all users? | Pass 
+Error Handling | Do error handlers function? | Pass
