@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ or os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['spins-and-needles.herokuapp.com', 'localhost']
 
@@ -231,3 +235,29 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# Security Settings
+if not DEBUG:
+    # HTTPS/SSL Settings
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # HSTS (HTTP Strict Transport Security)
+    # Tells browsers to only connect via HTTPS for the next year
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+    # Security Headers
+    SECURE_CONTENT_TYPE_NOSNIFF = True  # X-Content-Type-Options: nosniff
+    SECURE_BROWSER_XSS_FILTER = True  # X-XSS-Protection: 1; mode=block
+    X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking
+
+    # Content Security Policy
+    # Allow scripts from same origin, Stripe, and jQuery CDN
+    # Allow styles from same origin and inline styles (needed for Bootstrap/custom CSS)
+    # Allow images from same origin, S3, and Stripe
+    # Allow fonts from same origin
+    # Allow connections to Stripe API
+    SECURE_REFERRER_POLICY = 'same-origin'

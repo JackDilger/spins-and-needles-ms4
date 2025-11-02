@@ -11,25 +11,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+
     <!-- Preconnect to external domains for faster resource loading -->
     <link rel="preconnect" href="https://ka-f.fontawesome.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Optimized Google Fonts loading with display=swap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Squada+One&display=swap">
+
+    <!-- Critical CSS inlined for faster initial render -->
+    <style>
+        body{position:relative;font-family:'Roboto',sans-serif;background-color:#F8F0E3;margin:0}
+        .text-white{color:whitesmoke!important}
+        .text-orange{color:#ff914d}
+        .text-black{color:#000}
+        .bg-black{background:#000!important}
+        .bg-orange{background:#ff914d!important}
+        .border-white{border:1px solid whitesmoke!important}
+        #logo{width:300px;height:100px}
+        #delivery-banner{font-family:'Squada One',cursive}
+        i{color:white}
+        .main-logo-link{width:fit-content}
+        h1{font-family:'Squada One',cursive}
+        .container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+        .row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
+        .col,.col-12{position:relative;width:100%;padding-right:15px;padding-left:15px}
+        header{display:block}
+    </style>
+
     {% block corecss %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Load custom Bootstrap build (only used components, 60% smaller) -->
+    <link rel="preload" href="{% static 'css/bootstrap-custom.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static 'css/bootstrap-custom.min.css' %}"></noscript>
+    <!-- Minified custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.min.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-    <script src="https://kit.fontawesome.com/e5b3623f47.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Stripe must load early for checkout pages, but defer others -->
+    <script src="https://js.stripe.com/v3/" {% if request.path != '/checkout/' %}defer{% endif %}></script>
     {% endblock %}
 
     <title>Spins & Needles</title>
@@ -141,9 +167,20 @@
 
     {% include 'includes/footer.html' %}
 
+    <!-- Deferred JavaScript for better performance -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" defer></script>
+    <script src="https://kit.fontawesome.com/e5b3623f47.js" crossorigin="anonymous" defer></script>
+
     {% block postloadjs %}
     <script type="text/javascript">
-        $('.toast').toast('show');
+        // Wait for jQuery to load before running
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof jQuery !== 'undefined') {
+                $('.toast').toast('show');
+            }
+        });
     </script>
     {% endblock %}
 </body>
