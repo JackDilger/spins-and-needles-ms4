@@ -18,7 +18,7 @@ class Post(models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     content = models.TextField()
     event_date = models.DateTimeField(max_length=254, null=False, blank=False)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=0, db_index=True)
     event_price = models.DecimalField(max_digits=6, decimal_places=2,
                                       default=0)
     location = models.TextField(null=True, blank=True)

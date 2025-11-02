@@ -18,7 +18,7 @@ class Product(models.Model):
     genre = models.ForeignKey(
         'Genre', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, db_index=True)
     description = models.TextField()
     release_year = models.CharField(max_length=4, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
