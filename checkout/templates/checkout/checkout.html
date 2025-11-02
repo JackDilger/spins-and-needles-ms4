@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
+{% load image_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.min.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -39,9 +40,9 @@
                 <div class="col-2 mb-1">
                     <a href="{% url 'product_detail' item.product.id %}" aria-label="product-image">
                         {% if item.product.image %}
-                        <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                        {% webp_picture item.product.image.url item.product.name "w-100" False %}
                         {% else %}
-                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        {% webp_img "no_image.jpg" MEDIA_URL item.product.name "w-100" "" False %}
                         {% endif %}
                     </a>
                 </div>

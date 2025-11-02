@@ -1,3 +1,4 @@
+{% load image_tags %}
 <div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
     <div class="arrow-up arrow-success"></div>
     <div class="w-100 toast-capper bg-success"></div>
@@ -21,9 +22,9 @@
             <div class="row">
                 <div class="col-3 my-1">
                     {% if item.product.image %}
-                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {% webp_picture item.product.image.url item.product.name "w-100" False %}
                     {% else %}
-                    <img class="w-100" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ item.product.name }}">
+                    {% webp_img "no_image.jpg" MEDIA_URL item.product.name "w-100" "" False %}
                     {% endif %}
                 </div>
                 <div class="col-9">

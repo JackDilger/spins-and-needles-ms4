@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
+{% load image_tags %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -37,9 +38,9 @@
                     <tr>
                         <td class="p-3 w-25">
                             {% if item.product.image %}
-                            <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% webp_picture item.product.image.url item.product.name "img-fluid rounded" False %}
                             {% else %}
-                            <img class="img-fluid rounded" src="{{ MEDIA_URL }}no_image.jpg" alt="{{ item.product.name }}">
+                            {% webp_img "no_image.jpg" MEDIA_URL item.product.name "img-fluid rounded" "" False %}
                             {% endif %}
                         </td>
                         <td class="py-3">

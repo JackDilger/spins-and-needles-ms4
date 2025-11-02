@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load image_tags %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -23,11 +24,11 @@
             <div class="post-img">
                 {% if post.image %}
                 <a href="{% url 'post_detail' post.slug %}">
-                    <img style="width: 100%; height: 100%; object-fit:cover;" src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}">
+                    {% webp_img post.image MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" True %}
                 </a>
                 {% else %}
                 <a href="{% url 'post_detail' post.slug %}">
-                    <img style="width: 100%; height: 100%; object-fit:cover;" src="{{ MEDIA_URL }}no-image-event.jpg" alt="{{ post.title }}">
+                    {% webp_img "no-image-event.jpg" MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" True %}
                 </a>
                 {% endif %}
             </div>
