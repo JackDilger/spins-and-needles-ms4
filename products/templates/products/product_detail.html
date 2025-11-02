@@ -2,6 +2,8 @@
 {% load static %}
 {% load image_tags %}
 
+{% block meta_description %}{{ product.name }} - {{ product.genre }} vinyl record. {{ product.description|truncatewords:20 }} Available now at Spins & Needles with fast delivery.{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">

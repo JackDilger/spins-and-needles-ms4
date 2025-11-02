@@ -2,6 +2,8 @@
 {% load static %}
 {% load image_tags %}
 
+{% block meta_description %}{{ post.title }} - {{ post.content|striptags|truncatewords:25 }} Read more about this event at Spins & Needles.{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
