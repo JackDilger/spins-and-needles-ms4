@@ -59,23 +59,25 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()
+            # Batch fetch all products to avoid N+1 queries
+            product_ids = bag.keys()
+            products = Product.objects.in_bulk(product_ids)
             for item_id, item_data in bag.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
-                except Product.DoesNotExist:
+                product = products.get(int(item_id))
+                if not product:
                     messages.error(request, (
                         "One of the products in your bag wasn't found. "
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
+                if isinstance(item_data, int):
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=product,
+                        quantity=item_data,
+                    )
+                    order_line_item.save()
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
@@ -138,7 +140,10 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(
+        Order.objects.prefetch_related('lineitems__product'),
+        order_number=order_number
+    )
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

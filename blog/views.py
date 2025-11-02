@@ -8,7 +8,7 @@ from profiles.models import UserProfile
 def posts(request):
     """ A view for the blog page """
 
-    posts = Post.objects.filter(status=1).order_by('-event_date')
+    posts = Post.objects.select_related('author').filter(status=1).order_by('-event_date')
 
     context = {
         'posts': posts,

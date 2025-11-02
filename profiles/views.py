@@ -21,7 +21,7 @@ def profile(request):
             messages.error(request, 'Update failed. Form not valid.')
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    orders = profile.orders.prefetch_related('lineitems__product').all()
 
     template = 'profiles/profile.html'
     context = {
@@ -34,7 +34,10 @@ def profile(request):
 
 
 def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(
+        Order.objects.prefetch_related('lineitems__product'),
+        order_number=order_number
+    )
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
