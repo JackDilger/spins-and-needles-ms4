@@ -24,18 +24,18 @@ class SecurityHeadersMiddleware:
         # Add CSP header - restrict resource loading
         # Policy breakdown:
         # - default-src 'self': Only load resources from same origin by default
-        # - script-src: Allow scripts from self, Stripe, jQuery CDN, FontAwesome, and inline scripts (needed for Stripe)
-        # - style-src: Allow styles from self, Bootstrap CDN, FontAwesome, and inline styles (needed for Bootstrap)
+        # - script-src: Allow scripts from self, Stripe, jQuery, Bootstrap CDN, FontAwesome, and inline scripts
+        # - style-src: Allow styles from self, Bootstrap CDN, Google Fonts, FontAwesome, and inline styles
         # - img-src: Allow images from self, S3 bucket, Stripe, and data URIs
-        # - font-src: Allow fonts from self, FontAwesome CDN
+        # - font-src: Allow fonts from self, Google Fonts, FontAwesome CDN
         # - connect-src: Allow API connections to self and Stripe
         # - frame-src: Allow iframes from Stripe (for 3D Secure)
         csp_policy = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://code.jquery.com https://cdn.jsdelivr.net https://kit.fontawesome.com; "
-            "style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com https://ka-f.fontawesome.com; "
+            "script-src 'self' 'unsafe-inline' https://js.stripe.com https://code.jquery.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com https://kit.fontawesome.com; "
+            "style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com https://fonts.googleapis.com https://ka-f.fontawesome.com; "
             "img-src 'self' https://spins-and-needles.s3.amazonaws.com https://spins-and-needles.s3.eu-west-2.amazonaws.com https://*.stripe.com data:; "
-            "font-src 'self' https://ka-f.fontawesome.com; "
+            "font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com; "
             "connect-src 'self' https://api.stripe.com https://ka-f.fontawesome.com; "
             "frame-src https://js.stripe.com; "
             "object-src 'none'; "
