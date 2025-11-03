@@ -36,7 +36,7 @@ class SecurityHeadersMiddleware:
             "style-src 'self' 'unsafe-inline' https://spins-and-needles.s3.amazonaws.com https://spins-and-needles.s3.eu-west-2.amazonaws.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com https://ka-f.fontawesome.com; "
             "img-src 'self' https://spins-and-needles.s3.amazonaws.com https://spins-and-needles.s3.eu-west-2.amazonaws.com https://*.stripe.com data:; "
             "font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com; "
-            "connect-src 'self' https://api.stripe.com https://ka-f.fontawesome.com; "
+            "connect-src 'self' https://api.stripe.com https://ka-f.fontawesome.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com; "
             "frame-src https://js.stripe.com; "
             "object-src 'none'; "
             "base-uri 'self'; "
