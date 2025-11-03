@@ -74,11 +74,14 @@ def webp_img(image_path, media_url, alt_text="", css_class="", style="", lazy=Fa
     if not image_path:
         return ""
 
+    # Convert ImageFieldFile to string if necessary
+    image_path_str = str(image_path)
+
     # Full image URL
-    full_url = f"{media_url}{image_path}"
+    full_url = f"{media_url}{image_path_str}"
 
     # Convert to WebP URL
-    base_path, ext = os.path.splitext(image_path)
+    base_path, ext = os.path.splitext(image_path_str)
     webp_path = f"{base_path}.webp"
     webp_url = f"{media_url}{webp_path}"
 
