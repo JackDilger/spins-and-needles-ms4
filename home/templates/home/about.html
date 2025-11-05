@@ -9,53 +9,463 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .about-hero {
+        position: relative;
+        height: 500px;
+        background-color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4rem;
+        overflow: hidden;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('{{ MEDIA_URL }}about-img.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);
+        transform: scale(1.1);
+        z-index: 1;
+    }
+
+    .about-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        z-index: 2;
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    .about-hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .about-hero-tagline {
+        font-family: 'Squada One', cursive;
+        font-size: 4rem;
+        font-weight: 400;
+        margin-bottom: 0;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+        letter-spacing: 2px;
+        line-height: 1.2;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        animation: bounce 2s infinite;
+        cursor: pointer;
+    }
+
+    .scroll-indicator i {
+        font-size: 2rem;
+        color: #ff914d;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+    /* Stats Section */
+    .stats-section {
+        background: #000;
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 4rem;
+    }
+
+    .stat-box {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .stat-number {
+        font-family: 'Squada One', cursive;
+        font-size: 3rem;
+        color: #ff914d;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+        color: #f8f0e3;
+    }
+
+    /* Content Sections */
+    .content-section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-family: 'Squada One', cursive;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #000;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: #ff914d;
+    }
+
+    .story-timeline {
+        position: relative;
+        padding-left: 3rem;
+        border-left: 3px solid #ff914d;
+        margin: 2rem 0;
+    }
+
+    .timeline-item {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -3.55rem;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ff914d;
+        border: 3px solid #f8f0e3;
+    }
+
+    .timeline-year {
+        font-family: 'Squada One', cursive;
+        font-size: 1.5rem;
+        color: #c44d0e;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    /* Mission Section */
+    .mission-box {
+        background: #000;
+        color: white;
+        padding: 3rem;
+        border-radius: 10px;
+        text-align: center;
+        margin: 3rem 0;
+    }
+
+    .mission-box h3 {
+        font-family: 'Squada One', cursive;
+        font-size: 2rem;
+        color: #ff914d;
+        margin-bottom: 1.5rem;
+    }
+
+    .mission-box p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        color: #ff914d;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+        font-family: 'Squada One', cursive;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #000;
+    }
+
+    /* Location Section */
+    .location-section {
+        background: #f8f0e3;
+        padding: 3rem;
+        border-radius: 10px;
+        border: 2px solid #ff914d;
+        margin: 3rem 0;
+    }
+
+    .location-details {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .location-icon {
+        font-size: 1.5rem;
+        color: #ff914d;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        text-align: center;
+        padding: 3rem 0;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: inline-block;
+    }
+
+    .cta-btn-primary {
+        background: #c44d0e;
+        color: white;
+        font-weight: 700;
+    }
+
+    .cta-btn-secondary {
+        background: #000;
+        color: white;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .about-hero {
+            height: 400px;
+        }
+
+        .about-hero-tagline {
+            font-size: 2.2rem;
+            padding: 0 1rem;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator {
+            bottom: 20px;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+        }
+    }
+
+        .story-timeline {
+            padding-left: 2rem;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h1 class="text-black">About</h1>
-            <hr class="w-50 mb-1">
-        </div>
+<!-- Hero Section -->
+<div class="about-hero">
+    <div class="about-hero-content">
+        <p class="about-hero-tagline">A place to discover music, artists and events.</p>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
-            <div class="about">
-                <div class="col-lg-12 p-none">
-                    <div class="about-img">
-                        <img style="width: 100%; height: 100%; object-fit:cover;" src="{{ MEDIA_URL }}about-img.jpg" alt="about-img">
-                    </div>
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <span class="stat-number">1985</span>
+                    <span class="stat-label">Established</span>
                 </div>
-                <div class="about-content text-center">
-                    <h2>
-                        A place to discover music, artists and events.
-                    </h2>
-                    <p>
-                        Spins & Needles was founded out of a passion for music. First
-                        established in 1985 by Jack Dilger, The shop was originally located
-                        in Afflecks Palace and has recently moved to its present Location
-                        (21 Port St, Manchester M1 2EQ) in 2012.
-                    </p>
-                    <p>
-                        It soon became a cultural icon and integral part within the Manchester
-                        music scene. The shop was also responsible for breaking much of the new
-                        dance music at the time, being one of the only shops in the UK to import
-                        dance music from around the globe.
-                    </p>
-                    <p>
-                        We have always been at the cutting edge of the music scene as is arguably
-                        one of the most respected & renowned in the UK. Today, the store is still shifting
-                        vinyl records and putting on events in our famous basment to showcase some of the best
-                        up and coming talent.
-                    </p>
-                    <p>
-                        Our purpose is simple: to support music artists around the globe and locally.
-                    </p>
-                    <p>
-                        See you soon!- Spins & Needles Team
-                    </p>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Years of Passion</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <span class="stat-number">100s</span>
+                    <span class="stat-label">Of Rare Records & New Releases</span>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Our Story Section -->
+    <div class="content-section">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h2 class="section-title">Our Story</h2>
+                <div class="story-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1985</div>
+                        <p>Spins & Needles was founded out of a passion for music by Jack Dilger. The shop was originally located in the iconic Afflecks Palace, quickly becoming a cornerstone of Manchester's vibrant music scene.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990s</div>
+                        <p>The shop became a cultural icon and integral part of the Manchester music scene. We were responsible for breaking much of the new dance music at the time, being one of the only shops in the UK to import dance music from around the globe.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <p>Moved to our current location at 21 Port St, Manchester M1 2EQ, bringing our passion for music and community to a new generation of vinyl enthusiasts.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Today</div>
+                        <p>We continue to be at the cutting edge of the music scene as one of the most respected and renowned record shops in the UK. The store is still shifting vinyl records and putting on events in our famous basement to showcase some of the best up and coming talent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What We Offer Section -->
+    <div class="content-section">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h2 class="section-title">What We Offer</h2>
+            </div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-record-vinyl"></i></div>
+                <h3>Rare Vinyl</h3>
+                <p>Curated collection of rare and new releases from around the world.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <h3>Global Imports</h3>
+                <p>Direct imports of dance music and unique finds from international labels.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3>Live Events</h3>
+                <p>Regular events in our famous basement showcasing emerging talent.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-headphones"></i></div>
+                <h3>Expert Knowledge</h3>
+                <p>Over 40 years of experience helping you discover your next favorite record.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="content-section">
+        <div class="mission-box">
+            <h3>Our Mission</h3>
+            <p>Our purpose is simple: to support music artists around the globe and locally. We believe in the power of music to bring people together and create unforgettable experiences.</p>
+        </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="content-section">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="location-section">
+                    <h3 class="section-title">Visit Us</h3>
+                    <div class="location-details">
+                        <i class="fas fa-map-marker-alt location-icon"></i>
+                        <div>
+                            <strong>21 Port Street, Manchester M1 2EQ</strong>
+                        </div>
+                    </div>
+                    <p class="mt-3">Come visit us in the heart of Manchester's Northern Quarter. Whether you're a seasoned collector or just starting your vinyl journey, our knowledgeable staff are here to help you find exactly what you're looking for.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h3 class="mb-4">Ready to Explore?</h3>
+        <div class="cta-buttons">
+            <a href="{% url 'products' %}" class="cta-btn cta-btn-primary">Browse Our Collection</a>
+            <a href="{% url 'blog' %}" class="cta-btn cta-btn-secondary">View Upcoming Events</a>
+        </div>
+        <p class="mt-4" style="font-size: 1.2rem; font-style: italic;">See you soon! - Spins & Needles Team</p>
     </div>
 </div>
 {% endblock %}
