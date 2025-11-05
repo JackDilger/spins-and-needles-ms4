@@ -88,7 +88,7 @@
         font-size: 1.2rem;
         font-weight: bold;
         border-radius: 5px;
-        text-decoration: none;
+        text-decoration: none !important;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: inline-block;
         font-family: 'Squada One', cursive;
@@ -97,13 +97,13 @@
 
     .hero-cta-btn-primary {
         background: #ff914d;
-        color: #000;
+        color: #000 !important;
         font-weight: 700;
     }
 
     .hero-cta-btn-secondary {
         background: white;
-        color: #000;
+        color: #000 !important;
     }
 
     .hero-cta-btn:hover {
@@ -113,7 +113,7 @@
 
     .hero-cta-btn-secondary:hover {
         background: #f8f0e3;
-        color: #000;
+        color: #000 !important;
     }
 
     /* Scroll indicator */
@@ -160,8 +160,15 @@
 
     .stat-icon {
         font-size: 3rem;
-        color: #ff914d;
         margin-bottom: 1rem;
+    }
+
+    .stat-icon i {
+        color: white;
+    }
+
+    .stat-icon i:hover {
+        color: #ff914d;
     }
 
     .stat-label {
@@ -288,8 +295,8 @@
         align-self: flex-start;
         padding: 0.8rem 1.5rem;
         background: #ff914d;
-        color: #000;
-        text-decoration: none;
+        color: #000 !important;
+        text-decoration: none !important;
         border-radius: 5px;
         font-weight: 700;
         transition: all 0.3s ease;
@@ -299,7 +306,7 @@
 
     .category-btn:hover {
         background: #ffaa70;
-        color: #000;
+        color: #000 !important;
         transform: scale(1.05);
     }
 
@@ -333,8 +340,11 @@
 
     .feature-icon {
         font-size: 3rem;
-        color: #ff914d;
         margin-bottom: 1rem;
+    }
+
+    .feature-icon i {
+        color: #ff914d !important;
     }
 
     .feature-card h3 {
@@ -532,4 +542,17 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    // Smooth scroll when clicking the scroll indicator
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        document.querySelector('.stats-section').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+</script>
 {% endblock %}
