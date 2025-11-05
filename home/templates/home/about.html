@@ -231,10 +231,12 @@
 
     .feature-icon {
         font-size: 3rem;
-        color: #ff914d;
         margin-bottom: 1rem;
     }
 
+    .feature-icon i {
+        color: #ff914d !important;
+    }
     .feature-card h3 {
         font-family: 'Squada One', cursive;
         font-size: 1.5rem;
@@ -281,26 +283,27 @@
         font-size: 1.1rem;
         font-weight: bold;
         border-radius: 5px;
-        text-decoration: none;
+        text-decoration: none !important;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: inline-block;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
     }
 
     .cta-btn-primary {
-        background: #c44d0e;
-        color: white;
+        background: #ff914d;
+        color: #000 !important;
         font-weight: 700;
     }
 
     .cta-btn-secondary {
         background: #000;
-        color: white;
+        color: white !important;
     }
 
     .cta-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        color: white;
     }
 
     /* Responsive */
@@ -468,4 +471,17 @@
         <p class="mt-4" style="font-size: 1.2rem; font-style: italic;">See you soon! - Spins & Needles Team</p>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    // Smooth scroll when clicking the scroll indicator
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        document.querySelector('.stats-section').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+</script>
 {% endblock %}
