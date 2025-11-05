@@ -231,8 +231,11 @@
 
     .feature-icon {
         font-size: 3rem;
-        color: #ff914d;
         margin-bottom: 1rem;
+    }
+
+    .feature-icon i {
+        color: #ff914d !important;
     }
 
     .feature-card h3 {
@@ -281,26 +284,27 @@
         font-size: 1.1rem;
         font-weight: bold;
         border-radius: 5px;
-        text-decoration: none;
+        text-decoration: none !important;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: inline-block;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
     }
 
     .cta-btn-primary {
-        background: #c44d0e;
-        color: white;
+        background: #ff914d;
+        color: #000 !important;
         font-weight: 700;
     }
 
     .cta-btn-secondary {
         background: #000;
-        color: white;
+        color: white !important;
     }
 
     .cta-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        color: white;
     }
 
     /* Responsive */
