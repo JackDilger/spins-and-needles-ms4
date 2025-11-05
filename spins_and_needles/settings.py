@@ -18,6 +18,10 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Import env.py if it exists (for local development)
+if os.path.exists(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'env.py')):
+    import env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
