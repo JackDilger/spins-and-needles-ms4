@@ -9,56 +9,550 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .home-hero {
+        position: relative;
+        height: 600px;
+        background-color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        overflow: hidden;
+    }
+
+    .home-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('{{ MEDIA_URL }}img-gallery-1.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);
+        transform: scale(1.1);
+        z-index: 1;
+    }
+
+    .home-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        z-index: 2;
+    }
+
+    .home-hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: white;
+        max-width: 900px;
+        padding: 2rem;
+    }
+
+    .home-hero h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+        letter-spacing: 3px;
+        line-height: 1.1;
+    }
+
+    .home-hero-tagline {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        line-height: 1.6;
+        color: #f8f0e3;
+    }
+
+    .hero-cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .hero-cta-btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: inline-block;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+    }
+
+    .hero-cta-btn-primary {
+        background: #ff914d;
+        color: #000 !important;
+        font-weight: 700;
+    }
+
+    .hero-cta-btn-secondary {
+        background: white;
+        color: #000 !important;
+    }
+
+    .hero-cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(255, 145, 77, 0.5);
+    }
+
+    .hero-cta-btn-secondary:hover {
+        background: #f8f0e3;
+        color: #000 !important;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        animation: bounce 2s infinite;
+        cursor: pointer;
+    }
+
+    .scroll-indicator i {
+        font-size: 2rem;
+        color: #ff914d;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+    /* Stats Section */
+    .stats-section {
+        background: #000;
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 0;
+    }
+
+    .stat-box {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .stat-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .stat-icon i {
+        color: white;
+    }
+
+    .stat-icon i:hover {
+        color: #ff914d;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+        color: #f8f0e3;
+        font-weight: 500;
+    }
+
+    /* Featured Categories Section */
+    .featured-section {
+        background: #f8f0e3;
+        padding: 4rem 0;
+    }
+
+    .section-title {
+        font-family: 'Squada One', cursive;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #000;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 3rem;
+    }
+
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .category-card {
+        position: relative;
+        height: 350px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease;
+        z-index: 1;
+    }
+
+    .category-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+        z-index: 2;
+        transition: background 0.3s ease;
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-card:hover::before {
+        transform: scale(1.1);
+    }
+
+    .category-card:hover::after {
+        background: linear-gradient(rgba(255, 145, 77, 0.4), rgba(0, 0, 0, 0.8));
+    }
+
+    .category-card-1::before {
+        background-image: url('{{ MEDIA_URL }}img-gallery-1.jpg');
+    }
+
+    .category-card-2::before {
+        background-image: url('{{ MEDIA_URL }}img-gallery-3.jpg');
+    }
+
+    .category-card-3::before {
+        background-image: url('{{ MEDIA_URL }}img-gallery-2.jpg');
+    }
+
+    .category-content {
+        position: relative;
+        z-index: 3;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+        color: white;
+    }
+
+    .category-title {
+        font-family: 'Squada One', cursive;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        letter-spacing: 2px;
+    }
+
+    .category-description {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .category-btn {
+        align-self: flex-start;
+        padding: 0.8rem 1.5rem;
+        background: #ff914d;
+        color: #000 !important;
+        text-decoration: none !important;
+        border-radius: 5px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+    }
+
+    .category-btn:hover {
+        background: #ffaa70;
+        color: #000 !important;
+        transform: scale(1.05);
+    }
+
+    /* Why Choose Us Section */
+    .why-choose-section {
+        background: white;
+        padding: 4rem 0;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 2rem;
+        background: #f8f0e3;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: #ff914d;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-icon i {
+        color: #ff914d !important;
+    }
+
+    .feature-card h3 {
+        font-family: 'Squada One', cursive;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #000;
+        letter-spacing: 1px;
+    }
+
+    .feature-card p {
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: #000;
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+    .cta-section h2 {
+        font-family: 'Squada One', cursive;
+        font-size: 3rem;
+        color: #ff914d;
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .cta-section p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        color: #f8f0e3;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .home-hero {
+            height: 500px;
+        }
+
+        .home-hero h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .home-hero-tagline {
+            font-size: 1.2rem;
+        }
+
+        .hero-cta-btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+        }
+
+        .category-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Image gallery credit (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade)-->
-<div class="container">
-    <div class="row gallery">
-        <div class="col-6 offset-1 image-container">
-            <a href="">
-                <img src="{{ MEDIA_URL }}img-gallery-1.jpg" alt="Girl browsing vinyl in a record shop" class="gallery-lg-img image">
-            </a>
-            <div class="image-grid-hover">
-                <div>
-                    <h1 class="gallery-header text-black">ESSENTIAL PICKS</h1>
-                    <span class="gallery-sub-header">The hottest records right here</span>
-                    <div class="mt-2">
-                        <a href="{% url 'products' %}" class="btn btn-sm gallery-btn text-white">Shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <a href="">
-                <img src="{{ MEDIA_URL }}img-gallery-4.jpg" alt="A stack of vinyl records propt up by headphones" class="gallery-sm-img">
-            </a>
-            <a href="">
-                <img src="{{ MEDIA_URL }}img-gallery-5.jpg" alt="People shopping in a record store" class="gallery-sm-img">
-            </a>
+<!-- Hero Section -->
+<div class="home-hero">
+    <div class="home-hero-content">
+        <h1>Spins & Needles</h1>
+        <p class="home-hero-tagline">Manchester's legendary vinyl destination since 1985. Discover rare records, new releases, and unforgettable live events.</p>
+        <div class="hero-cta-buttons">
+            <a href="{% url 'products' %}" class="hero-cta-btn hero-cta-btn-primary">Shop Vinyl</a>
+            <a href="{% url 'blog' %}" class="hero-cta-btn hero-cta-btn-secondary">View Events</a>
         </div>
     </div>
-    <div class="row gallery">
-        <div class="col-4 offset-1">
-            <a href="">
-                <img src="{{ MEDIA_URL}}img-gallery-6.jpg" alt="People dancing" class="gallery-sm-img">
-            </a>
-            <a href="">
-                <img src="{{ MEDIA_URL }}img-gallery-2.jpg" alt="A dj playing vinyl records" class="gallery-sm-img">
-            </a>
-        </div>
-        <div class="col-6 image-container">
-            <a href="">
-                <img src="{{ MEDIA_URL }}img-gallery-3.jpg" alt="Neon sign that reads 'music for the people'" class="gallery-lg-img image">
-            </a>
-            <div class="image-grid-hover">
-                <div>
-                    <h1 class="gallery-header text-black">LETS DANCE</h1>
-                    <span class="gallery-sub-header text-black">Come check out our events</span>
-                    <div class="mt-2">
-                        <a href="{% url 'blog' %}" class="btn btn-sm gallery-btn text-white">Lets go</a>
-                    </div>
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-record-vinyl"></i></div>
+                    <div class="stat-label">Curated Vinyl Collection</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-music"></i></div>
+                    <div class="stat-label">40+ Years of Music Passion</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-label">Live Events Every Month</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Featured Categories Section -->
+<div class="featured-section">
+    <div class="container">
+        <h2 class="section-title">Explore Our Collection</h2>
+        <p class="section-subtitle">From rare imports to the latest releases, we've got something for every music lover</p>
+
+        <div class="category-grid">
+            <div class="category-card category-card-1">
+                <div class="category-content">
+                    <h3 class="category-title">Essential Picks</h3>
+                    <p class="category-description">The hottest records right here</p>
+                    <a href="{% url 'products' %}" class="category-btn">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="category-card category-card-2">
+                <div class="category-content">
+                    <h3 class="category-title">Live Events</h3>
+                    <p class="category-description">Come check out our basement shows</p>
+                    <a href="{% url 'blog' %}" class="category-btn">See Events</a>
+                </div>
+            </div>
+
+            <div class="category-card category-card-3">
+                <div class="category-content">
+                    <h3 class="category-title">DJ Classics</h3>
+                    <p class="category-description">Vinyl that moves the dancefloor</p>
+                    <a href="{% url 'products' %}" class="category-btn">Browse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="why-choose-section">
+    <div class="container">
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-subtitle">Four decades of passion for music and community</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h3>Rare Finds</h3>
+                <p>Access to rare and hard-to-find vinyl from around the world</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3>Global Network</h3>
+                <p>Direct imports from international labels and distributors</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
+                <h3>Expert Staff</h3>
+                <p>Knowledgeable team to help you discover your next favorite album</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Community Hub</h3>
+                <p>A meeting place for music lovers and vinyl enthusiasts</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="cta-section">
+    <div class="container">
+        <h2>Ready to Start Your Collection?</h2>
+        <p>Visit us in Manchester's Northern Quarter or shop online today</p>
+        <div class="hero-cta-buttons">
+            <a href="{% url 'products' %}" class="hero-cta-btn hero-cta-btn-primary">Browse All Records</a>
+            <a href="{% url 'about' %}" class="hero-cta-btn hero-cta-btn-secondary">Learn More</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    // Smooth scroll when clicking the scroll indicator
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        document.querySelector('.stats-section').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+</script>
 {% endblock %}
