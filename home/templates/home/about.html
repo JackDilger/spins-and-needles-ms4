@@ -193,6 +193,10 @@
         border-radius: 10px;
         text-align: center;
         margin: 0;
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .mission-box h3 {
@@ -251,6 +255,10 @@
         border-radius: 10px;
         border: 2px solid #ff914d;
         margin: 0;
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .location-details {
@@ -338,15 +346,15 @@
 <div class="container">
     <!-- Mission and Visit Us Side by Side -->
     <div class="content-section">
-        <div class="row">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="mission-box h-100">
+        <div class="row d-flex">
+            <div class="col-lg-6 mb-4 mb-lg-0 d-flex">
+                <div class="mission-box w-100">
                     <h3>Our Mission</h3>
                     <p>Our purpose is simple: to support music artists around the globe and locally. We believe in the power of music to bring people together and create unforgettable experiences.</p>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="location-section h-100">
+            <div class="col-lg-6 d-flex">
+                <div class="location-section w-100">
                     <h3 class="section-title">Visit Us</h3>
                     <div class="location-details">
                         <i class="fas fa-map-marker-alt location-icon"></i>
