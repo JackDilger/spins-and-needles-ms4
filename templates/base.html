@@ -61,8 +61,8 @@
     <!-- Load custom Bootstrap build (only used components, 60% smaller) -->
     <link rel="preload" href="{% static 'css/bootstrap-custom.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{% static 'css/bootstrap-custom.min.css' %}"></noscript>
-    <!-- Minified custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/base.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
@@ -180,6 +180,7 @@
     {% block content %}
     {% endblock %}
 
+    {% include 'includes/cta-section.html' %}
     {% include 'includes/footer.html' %}
 
     <!-- Deferred JavaScript for better performance -->

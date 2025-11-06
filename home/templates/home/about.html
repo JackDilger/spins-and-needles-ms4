@@ -265,47 +265,6 @@
         color: #ff914d;
     }
 
-    /* CTA Section */
-    .cta-section {
-        text-align: center;
-        padding: 3rem 0;
-    }
-
-    .cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .cta-btn {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        font-weight: bold;
-        border-radius: 5px;
-        text-decoration: none !important;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: inline-block;
-        font-family: 'Squada One', cursive;
-        letter-spacing: 1px;
-    }
-
-    .cta-btn-primary {
-        background: #ff914d;
-        color: #000 !important;
-        font-weight: 700;
-    }
-
-    .cta-btn-secondary {
-        background: #000;
-        color: white !important;
-    }
-
-    .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
         .about-hero {
@@ -459,16 +418,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="cta-section">
-        <h3 class="mb-4">Ready to Explore?</h3>
-        <div class="cta-buttons">
-            <a href="{% url 'products' %}" class="cta-btn cta-btn-primary">Browse Our Collection</a>
-            <a href="{% url 'blog' %}" class="cta-btn cta-btn-secondary">View Upcoming Events</a>
-        </div>
-        <p class="mt-4" style="font-size: 1.2rem; font-style: italic;">See you soon! - Spins & Needles Team</p>
     </div>
 </div>
 {% endblock %}
