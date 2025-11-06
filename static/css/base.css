@@ -4,6 +4,16 @@ body {
     position: relative;
     font-family: 'Roboto', sans-serif;
     background-color: #F8F0E3;
+    padding-top: 164px; /* Space for fixed header - adjust if needed */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
 }
 
 :focus {
@@ -262,7 +272,7 @@ a.genre-badge>span.badge:hover {
 
 .message-container {
     position: fixed;
-    top: 72px;
+    top: 174px; /* Below fixed header */
     right: 15px;
     z-index: 99999999999;
 }
@@ -530,6 +540,14 @@ footer {
 
 /* Media Queries */
 @media (max-width: 425px) {
+    body {
+        padding-top: 140px; /* Smaller header on mobile */
+    }
+
+    .message-container {
+        top: 150px;
+    }
+
     .gallery-sm-img {
         height: 100px;
         margin-bottom: 10px;
