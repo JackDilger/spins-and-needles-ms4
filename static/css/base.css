@@ -4,6 +4,16 @@ body {
     position: relative;
     font-family: 'Roboto', sans-serif;
     background-color: #F8F0E3;
+    padding-top: 164px; /* Space for fixed header - adjust if needed */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
 }
 
 :focus {
@@ -262,7 +272,7 @@ a.genre-badge>span.badge:hover {
 
 .message-container {
     position: fixed;
-    top: 72px;
+    top: 174px; /* Below fixed header */
     right: 15px;
     z-index: 99999999999;
 }
@@ -474,6 +484,68 @@ a.genre-badge>span.badge:hover {
     text-decoration: none;
 }
 
+/* CTA Section */
+.cta-section {
+    background: #000;
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: 'Squada One', cursive;
+    font-size: 3rem;
+    color: #ff914d;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.cta-section p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #f8f0e3;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    font-family: 'Squada One', cursive;
+    letter-spacing: 1px;
+}
+
+.cta-btn-primary {
+    background: #ff914d;
+    color: #000 !important;
+    font-weight: 700;
+}
+
+.cta-btn-secondary {
+    background: white;
+    color: #000 !important;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 145, 77, 0.5);
+}
+
+.cta-btn-secondary:hover {
+    background: #f8f0e3;
+    color: #000 !important;
+}
+
 footer {
     font-size: 1.2rem;
     padding: 20px;
@@ -530,6 +602,14 @@ footer {
 
 /* Media Queries */
 @media (max-width: 425px) {
+    body {
+        padding-top: 140px; /* Smaller header on mobile */
+    }
+
+    .message-container {
+        top: 150px;
+    }
+
     .gallery-sm-img {
         height: 100px;
         margin-bottom: 10px;

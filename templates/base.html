@@ -35,7 +35,7 @@
         /* Font-face declarations to ensure fonts are defined before use */
         @font-face{font-family:'Squada One';font-style:normal;font-weight:400;font-display:block;src:url(https://fonts.gstatic.com/s/squadaone/v18/BCasqZ8XsOrx4mcOk6MtWaA8WDBkHgs.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
         @font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:block;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-        body{position:relative;font-family:'Roboto',sans-serif;background-color:#F8F0E3;margin:0}
+        body{position:relative;font-family:'Roboto',sans-serif;background-color:#F8F0E3;margin:0;padding-top:164px}
         .text-white{color:whitesmoke!important}
         .text-orange{color:#ff914d}
         .text-black{color:#000}
@@ -50,18 +50,19 @@
         .container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
         .row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
         .col,.col-12{position:relative;width:100%;padding-right:15px;padding-left:15px}
-        header{display:block}
+        header{position:fixed;top:0;left:0;right:0;z-index:1000;background-color:#000}
         /* Reserve space for icons to prevent layout shift */
         .fas,.fa-solid,.fab,.fa,.fa-regular{display:inline-block;min-width:1.25em;text-align:center}
         .fa-lg{font-size:1.33333em;line-height:0.75em;vertical-align:-0.0667em}
+        @media (max-width:425px){body{padding-top:140px}}
     </style>
 
     {% block corecss %}
     <!-- Load custom Bootstrap build (only used components, 60% smaller) -->
     <link rel="preload" href="{% static 'css/bootstrap-custom.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{% static 'css/bootstrap-custom.min.css' %}"></noscript>
-    <!-- Minified custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/base.min.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
@@ -179,6 +180,7 @@
     {% block content %}
     {% endblock %}
 
+    {% include 'includes/cta-section.html' %}
     {% include 'includes/footer.html' %}
 
     <!-- Deferred JavaScript for better performance -->
