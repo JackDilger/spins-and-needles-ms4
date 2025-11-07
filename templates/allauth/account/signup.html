@@ -1,24 +1,239 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
 
-{% block inner_content %}
-<hr>
-<h1 class="mb-4">{% trans "Sign Up" %}</h1>
-<hr>
+{% block extra_css %}
+<style>
+    /* Modern centered register form - matches login design */
+    .register-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7rem 1rem 4rem 1rem;
+    }
 
-<p>{% blocktrans %}Already have an account? Then please <a class="font-weight-bold" href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    .register-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 1.2rem 3rem 1.5rem 3rem;
+        max-width: 550px;
+        width: 100%;
+    }
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
-    {% endif %}
-    <a class="btn all-auth-btn text-white rounded-0" href="{% url 'account_login' %}">Back to Login</a>
-    <button class="btn all-auth-btn text-white rounded-0" type="submit">{% trans "Sign Up" %}</button>
-</form>
+    .register-card h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 0.8rem;
+        color: #000;
+        letter-spacing: 1px;
+    }
 
+    .register-form .form-group {
+        margin-bottom: 0.6rem;
+    }
+
+    .register-form label {
+        display: none;
+    }
+
+    .register-form input[type="text"],
+    .register-form input[type="email"],
+    .register-form input[type="password"] {
+        width: 100%;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.9rem;
+        border: none;
+        border-bottom: 2px solid #ddd;
+        background: transparent;
+        transition: border-color 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .register-form input[type="text"]:focus,
+    .register-form input[type="email"]:focus,
+    .register-form input[type="password"]:focus {
+        outline: none;
+        border-bottom-color: #ff914d;
+    }
+
+    .register-form input::placeholder {
+        color: #aaa;
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        font-weight: bold;
+        background: #ff914d;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .register-btn:hover {
+        background: #ffaa70;
+        color: #000;
+        transform: scale(1.05);
+    }
+
+    .divider {
+        border-top: 1px solid #ddd;
+        margin: 0.8rem 0 0.6rem 0;
+    }
+
+    .login-section {
+        text-align: center;
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .login-section a {
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .login-section a:hover {
+        color: #ff914d;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .register-container {
+            min-height: auto;
+            padding: 8rem 1rem 2rem 1rem;
+            align-items: flex-start;
+        }
+
+        .register-card {
+            padding: 1.2rem 1.5rem;
+        }
+
+        .register-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .register-form .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="password"] {
+            padding: 0.7rem 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .register-btn {
+            padding: 0.75rem;
+            font-size: 1rem;
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .divider {
+            margin: 0.8rem 0 0.6rem 0;
+        }
+
+        .login-section {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .register-container {
+            padding: 8rem 1rem 2rem 1rem;
+        }
+
+        .register-card {
+            padding: 1rem 1.2rem;
+        }
+
+        .register-card h1 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card">
+        <h1>{% trans "Register" %}</h1>
+
+        <form class="register-form" method="POST" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       autocomplete="email"
+                       required
+                       id="id_email">
+            </div>
+
+            <div class="form-group">
+                <input type="email"
+                       name="email2"
+                       placeholder="Confirm your email"
+                       autocomplete="email"
+                       required
+                       id="id_email2">
+            </div>
+
+            <div class="form-group">
+                <input type="text"
+                       name="username"
+                       placeholder="Choose a username"
+                       autocomplete="username"
+                       required
+                       id="id_username">
+            </div>
+
+            <div class="form-group">
+                <input type="password"
+                       name="password1"
+                       placeholder="Create a password"
+                       autocomplete="new-password"
+                       required
+                       id="id_password1">
+            </div>
+
+            <div class="form-group">
+                <input type="password"
+                       name="password2"
+                       placeholder="Confirm your password"
+                       autocomplete="new-password"
+                       required
+                       id="id_password2">
+            </div>
+
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+            {% endif %}
+
+            <button class="register-btn" type="submit">{% trans "Sign Up" %}</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="login-section">
+            {% blocktrans %}Already have an account? <a href="{{ login_url }}">Login</a>{% endblocktrans %}
+        </div>
+    </div>
+</div>
 {% endblock %}
