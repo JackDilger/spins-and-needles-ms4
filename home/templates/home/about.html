@@ -14,7 +14,7 @@
     /* Hero Section */
     .about-hero {
         position: relative;
-        height: 500px;
+        height: 600px;
         background-color: #1a1a1a;
         display: flex;
         align-items: center;
@@ -192,7 +192,11 @@
         padding: 3rem;
         border-radius: 10px;
         text-align: center;
-        margin: 3rem 0;
+        margin: 0;
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .mission-box h3 {
@@ -250,7 +254,11 @@
         padding: 3rem;
         border-radius: 10px;
         border: 2px solid #ff914d;
-        margin: 3rem 0;
+        margin: 0;
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .location-details {
@@ -336,6 +344,30 @@
 
 <!-- Main Content -->
 <div class="container">
+    <!-- Mission and Visit Us Side by Side -->
+    <div class="content-section">
+        <div class="row d-flex">
+            <div class="col-lg-6 mb-4 mb-lg-0 d-flex">
+                <div class="mission-box w-100">
+                    <h3>Our Mission</h3>
+                    <p>Our purpose is simple: to support music artists around the globe and locally. We believe in the power of music to bring people together and create unforgettable experiences.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+                <div class="location-section w-100">
+                    <h3 class="section-title">Visit Us</h3>
+                    <div class="location-details">
+                        <i class="fas fa-map-marker-alt location-icon"></i>
+                        <div>
+                            <strong>21 Port Street, Manchester M1 2EQ</strong>
+                        </div>
+                    </div>
+                    <p class="mt-3">Come visit us in the heart of Manchester's Northern Quarter. Whether you're a seasoned collector or just starting your vinyl journey, our knowledgeable staff are here to help you find exactly what you're looking for.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Our Story Section -->
     <div class="content-section">
         <div class="row justify-content-center">
@@ -394,31 +426,6 @@
         </div>
     </div>
 
-    <!-- Mission Section -->
-    <div class="content-section">
-        <div class="mission-box">
-            <h3>Our Mission</h3>
-            <p>Our purpose is simple: to support music artists around the globe and locally. We believe in the power of music to bring people together and create unforgettable experiences.</p>
-        </div>
-    </div>
-
-    <!-- Location Section -->
-    <div class="content-section">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="location-section">
-                    <h3 class="section-title">Visit Us</h3>
-                    <div class="location-details">
-                        <i class="fas fa-map-marker-alt location-icon"></i>
-                        <div>
-                            <strong>21 Port Street, Manchester M1 2EQ</strong>
-                        </div>
-                    </div>
-                    <p class="mt-3">Come visit us in the heart of Manchester's Northern Quarter. Whether you're a seasoned collector or just starting your vinyl journey, our knowledgeable staff are here to help you find exactly what you're looking for.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 {% endblock %}
 
@@ -427,9 +434,14 @@
 <script>
     // Smooth scroll when clicking the scroll indicator
     document.querySelector('.scroll-indicator').addEventListener('click', function() {
-        document.querySelector('.stats-section').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        const statsSection = document.querySelector('.stats-section');
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const yOffset = -headerHeight;
+        const y = statsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({
+            top: y,
+            behavior: 'smooth'
         });
     });
 </script>
