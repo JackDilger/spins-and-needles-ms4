@@ -9,11 +9,10 @@
 <style>
     /* Modern centered login form */
     .login-container {
-        min-height: calc(100vh - var(--header-height-desktop) - 100px);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 4rem 1rem 4rem 1rem;
+        padding: 7rem 1rem 4rem 1rem;
     }
 
     .login-card {
@@ -155,20 +154,66 @@
 
     @media (max-width: 768px) {
         .login-container {
-            min-height: calc(100vh - var(--header-height-mobile) - 200px);
+            min-height: auto;
+            padding: 8rem 1rem 2rem 1rem;
+            align-items: flex-start;
         }
 
         .login-card {
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1.5rem;
         }
 
         .login-card h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            padding: 0.8rem 0.5rem;
         }
 
         .remember-forgot-row {
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-btn {
+            padding: 0.8rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .divider {
+            margin: 1.2rem 0 1rem 0;
+        }
+
+        .register-section {
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .login-container {
+            padding: 8rem 1rem 2rem 1rem;
+        }
+
+        .login-card {
+            padding: 1.5rem 1.2rem;
+        }
+
+        .login-card h1 {
+            font-size: 1.8rem;
+        }
+
+        .remember-forgot-row {
+            font-size: 0.9rem;
         }
     }
 </style>

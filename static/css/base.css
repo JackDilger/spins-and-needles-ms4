@@ -2,8 +2,8 @@
 
 :root {
     /* Header height variables for consistent spacing across site */
-    --header-height-desktop: 240px;
-    --header-height-mobile: 200px;
+    --header-height-desktop: 164px;
+    --header-height-mobile: 140px;
 }
 
 body {

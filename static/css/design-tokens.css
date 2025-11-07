@@ -1,0 +1,239 @@
+/* ===================================
+   Design Tokens - Bootstrap 5 Migration
+   Modern design system for Spins & Needles
+   =================================== */
+
+:root {
+  /* Brand Colors */
+  --primary: #ff914d;      /* Orange */
+  --secondary: #000000;    /* Black */
+  --background: #F8F0E3;   /* Beige */
+  --surface: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-light: whitesmoke;
+
+  /* Typography */
+  --font-heading: 'Squada One', cursive;
+  --font-body: 'Roboto', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --line-height-base: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+
+  /* Shadows - Modern, softer approach */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.12);
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Z-index Scale */
+  --z-base: 0;
+  --z-content: 1;         /* Elevated content (forms, cards) */
+  --z-dropdown: 1000;     /* Bootstrap dropdowns */
+  --z-sticky: 1020;       /* Sticky positioned elements */
+  --z-fixed: 1030;        /* Fixed header (above dropdowns) */
+  --z-modal-backdrop: 1040; /* Bootstrap modal backdrop */
+  --z-modal: 1050;        /* Bootstrap modals */
+  --z-toast: 1060;        /* Toast notifications */
+  --z-tooltip: 1070;      /* Tooltips (highest UI) */
+  --z-loading: 1080;      /* Loading overlays (above all) */
+
+  /* Header Height (for offset calculations) */
+  --header-height: 164px; /* Desktop header height */
+}
+
+@media (max-width: 425px) {
+  :root {
+    --header-height: 140px; /* Mobile header height */
+  }
+}
+
+/* ===================================
+   Modern Utilities
+   =================================== */
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modern card styling */
+.card-modern {
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.card-modern:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Modern button enhancements */
+.btn {
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: #ff7f33;
+  border-color: #ff7f33;
+}
+
+/* Improved focus states for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.btn-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn var(--transition-base) ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide up animation */
+.slide-up {
+  animation: slideUp var(--transition-slow) ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern form inputs */
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
+}
+
+/* Floating labels enhancement */
+.form-floating > label {
+  color: var(--text-secondary);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--primary);
+}
+
+/* Image hover effects */
+.img-hover-zoom {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.img-hover-zoom img {
+  transition: transform var(--transition-slow);
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Backdrop blur utility */
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Modern overlay */
+.overlay-modern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.6)
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.overlay-modern:hover {
+  opacity: 1;
+}
