@@ -1,10 +1,16 @@
 /* Google Fonts now loaded in base.html for better performance */
 
+:root {
+    /* Header height variables for consistent spacing across site */
+    --header-height-desktop: 240px;
+    --header-height-mobile: 200px;
+}
+
 body {
     position: relative;
     font-family: 'Roboto', sans-serif;
     background-color: #F8F0E3;
-    padding-top: 164px; /* Space for fixed header - adjust if needed */
+    padding-top: var(--header-height-desktop);
 }
 
 header {
@@ -272,7 +278,7 @@ a.genre-badge>span.badge:hover {
 
 .message-container {
     position: fixed;
-    top: 174px; /* Below fixed header */
+    top: calc(var(--header-height-desktop) + 10px); /* Below fixed header */
     right: 15px;
     z-index: 99999999999;
 }
@@ -603,11 +609,11 @@ footer {
 /* Media Queries */
 @media (max-width: 425px) {
     body {
-        padding-top: 140px; /* Smaller header on mobile */
+        padding-top: var(--header-height-mobile);
     }
 
     .message-container {
-        top: 150px;
+        top: calc(var(--header-height-mobile) + 10px);
     }
 
     .gallery-sm-img {
