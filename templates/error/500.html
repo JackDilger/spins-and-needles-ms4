@@ -9,24 +9,137 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Centered error card */
+    .error-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7rem 1rem 4rem 1rem;
+        min-height: calc(100vh - 300px);
+    }
+
+    .error-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem 3rem;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .error-icon {
+        font-size: 4rem;
+        color: #ff914d !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .error-icon i {
+        color: #ff914d !important;
+    }
+
+    .error-card h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #000;
+        letter-spacing: 1px;
+    }
+
+    .error-message {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .error-btn {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background: #ff914d;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .error-btn:hover {
+        background: #ffaa70;
+        color: #000;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .error-container {
+            padding: 8rem 1rem 2rem 1rem;
+            min-height: auto;
+        }
+
+        .error-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .error-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .error-message {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .error-card {
+            padding: 1.5rem 1.2rem;
+        }
+
+        .error-card h1 {
+            font-size: 1.6rem;
+        }
+
+        .error-message {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container header-container">
-    <div class="row justify-content-center">
-        <div class="col s12 m8 offset-m2 mt-3">
-            <div class="card text-center">
-                <div class="card-header">
-                    ERROR 500
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title">Server Error</h1>
-                    <p class="card-text">Sorry, we're unable to fulfil your request. Rest assured we have been notified and are looking in to the issue.</p>
-                    <a href="{% url 'home' %}" class="btn text-white text-uppercase rewind-btn btn-lg">Rewind</a>
-                </div>
-                <div class="card-footer text-muted">
-                    <i class="fa-solid fa-face-frown" id="sad-face-icon"></i>
-                </div>
-            </div>
+<div class="error-container">
+    <div class="error-card">
+        <div class="error-icon">
+            <i class="fa-solid fa-server"></i>
         </div>
+
+        <h1>Server Error</h1>
+
+        <p class="error-message">
+            Sorry, we're unable to fulfil your request. Rest assured we have been notified and are looking in to the issue.
+        </p>
+
+        <a href="{% url 'home' %}" class="error-btn">Rewind</a>
     </div>
 </div>
 {% endblock %}
