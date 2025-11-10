@@ -12,89 +12,533 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Page Header - Light Vinyl Poster Style */
+    .event-header {
+        text-align: center;
+        padding: 2rem 1rem 1.75rem;
+        background: linear-gradient(180deg, #fdf6ed 0%, #f8f0e3 100%);
+        margin-bottom: 2.5rem;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 145, 77, 0.15);
+    }
+
+    .event-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 4px;
+        background: linear-gradient(90deg, transparent 0%, #ff914d 50%, transparent 100%);
+        box-shadow: 0 2px 10px rgba(255, 145, 77, 0.4);
+    }
+
+    .event-header h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 3rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #000;
+        margin: 0;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #000 0%, #2a2a2a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .event-header h1::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff914d 0%, #ffaa70 100%);
+        margin: 0.75rem auto 0;
+        border-radius: 3px;
+        box-shadow: 0 2px 10px rgba(255, 145, 77, 0.4);
+    }
+
+    /* Event Details Section */
+    .event-detail-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem 3rem;
+    }
+
+    /* Image and Info Grid */
+    .event-details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Event Image */
+    .event-image-container {
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        height: 400px;
+        background: #fff;
+        padding: 2rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .event-image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 8px;
+    }
+
+    /* Event Info Card */
+    .event-info-card {
+        background: #fff;
+        color: #333;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        height: 400px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .event-info-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .event-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 0.85rem;
+        background: #f8f0e3;
+        border-radius: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    .event-info-item:hover {
+        transform: translateY(-2px);
+    }
+
+    .event-info-item i {
+        color: #ff914d;
+        font-size: 1.2rem;
+        min-width: 24px;
+        margin-top: 0.2rem;
+    }
+
+    .event-info-label {
+        font-weight: 600;
+        color: #666;
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .event-info-value {
+        color: #000;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Event Content */
+    .event-content-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        line-height: 1.8;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .event-content-card h2 {
+        font-family: 'Squada One', cursive;
+        color: #000;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 3px solid #ff914d;
+        letter-spacing: 1px;
+    }
+
+    /* Comments Section */
+    .comments-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .comments-section h2 {
+        font-family: 'Squada One', cursive;
+        color: #000;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #ff914d;
+    }
+
+    .comment-item {
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+        background: #f8f0e3;
+        border-radius: 10px;
+        border-left: 4px solid #ff914d;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .comment-item:hover {
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .comment-author {
+        font-weight: bold;
+        color: #000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .comment-author i {
+        color: #ff914d;
+    }
+
+    .comment-date {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .comment-body {
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .no-comments {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #666;
+    }
+
+    .no-comments i {
+        font-size: 3rem;
+        color: #ff914d;
+        margin-bottom: 1rem;
+    }
+
+    /* Comment Form */
+    .comment-form-section {
+        background: #ff914d;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
+
+    .comment-form-section h3 {
+        font-family: 'Squada One', cursive;
+        color: #000;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .comment-form-section form {
+        max-width: 800px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .comment-form-section form > div:nth-child(2),
+    .comment-form-section form > div:nth-child(3) {
+        margin-bottom: 0;
+    }
+
+    .comment-form-section form > div:nth-child(4) {
+        grid-column: 1 / -1;
+    }
+
+    .comment-form-section form button {
+        grid-column: 1 / -1;
+    }
+
+    .comment-form-section label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #000;
+    }
+
+    .comment-form-section .form-control {
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        padding: 0.75rem;
+        margin-bottom: 0;
+        background: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+    }
+
+    .comment-form-section textarea.form-control {
+        vertical-align: top;
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .comment-form-section .form-control:focus {
+        border-color: #ff914d;
+        box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.15);
+        outline: none;
+    }
+
+    .comment-submit-btn {
+        background: #000;
+        color: #fff;
+        font-family: 'Squada One', cursive;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 5px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: auto;
+        display: block;
+        margin: 1rem auto 0;
+        cursor: pointer;
+    }
+
+    .comment-submit-btn:hover {
+        background: #2a2a2a;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .comment-success {
+        background: #d4edda;
+        border: 2px solid #c3e6cb;
+        color: #155724;
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .event-header {
+            padding: 1.75rem 1rem 1.5rem;
+        }
+
+        .event-header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .event-header h1::after {
+            width: 80px;
+            height: 3px;
+        }
+
+        .event-details-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .event-info-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .event-content-card,
+        .comments-section {
+            padding: 1.75rem;
+        }
+
+        .comment-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .comment-form-section form {
+            grid-template-columns: 1fr;
+        }
+
+        .comment-form-section form > div:nth-child(4) {
+            grid-column: 1;
+        }
+
+        .comment-form-section form button {
+            grid-column: 1;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .event-header {
+            padding: 1.5rem 1rem 1.25rem;
+        }
+
+        .event-header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .event-header h1::after {
+            width: 60px;
+        }
+
+        .event-content-card,
+        .comments-section {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h1 class="text-black">{{ post.title }}</h1>
-            <hr class="w-50 mb-1">
+<!-- Page Header -->
+<div class="event-header">
+    <h1>{{ post.title }}</h1>
+</div>
+
+<!-- Event Details Container -->
+<div class="event-detail-container">
+    <!-- Event Content -->
+    <div class="event-content-card">
+        <h2>About This Event</h2>
+        <div>{{ post.content | safe }}</div>
+    </div>
+
+    <!-- Image and Info Side by Side -->
+    <div class="event-details-grid">
+        <!-- Event Image -->
+        <div class="event-image-container">
+            {% if post.image %}
+            {% webp_img post.image MEDIA_URL post.title "" "" False %}
+            {% else %}
+            {% webp_img "no_image_event.jpg" MEDIA_URL post.title "" "" False %}
+            {% endif %}
+        </div>
+
+        <!-- Event Info Card -->
+        <div class="event-info-card">
+            <div class="event-info-grid">
+                <div class="event-info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <div class="event-info-label">When</div>
+                        <div class="event-info-value">{{ post.event_date }}</div>
+                    </div>
+                </div>
+                <div class="event-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div class="event-info-label">Location</div>
+                        <div class="event-info-value">{{ post.location }}</div>
+                    </div>
+                </div>
+                <div class="event-info-item">
+                    <i class="fas fa-ticket-alt"></i>
+                    <div>
+                        <div class="event-info-label">Ticket Price</div>
+                        <div class="event-info-value">£{{ post.event_price }}</div>
+                    </div>
+                </div>
+                <div class="event-info-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <div class="event-info-label">Posted By</div>
+                        <div class="event-info-value">{{ post.author|upper }}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
-            <div class="post">
-                <div class="col-lg-12 p-none">
-                    <div class="post-img">
-                        {% if post.image %}
-                        {% webp_img post.image MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" False %}
-                        {% else %}
-                        {% webp_img "no_image_event.jpg" MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" False %}
-                        {% endif %}
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+        <h2>Comments ({{ comments.count }})</h2>
+
+        {% if comments.count > 0 %}
+            {% for comment in comments %}
+            <div class="comment-item">
+                <div class="comment-header">
+                    <div class="comment-author">
+                        <i class="fas fa-user"></i>
+                        {{ comment.name | upper }}
+                    </div>
+                    <div class="comment-date">
+                        {{ comment.created_on }}
                     </div>
                 </div>
-                <hr>
-                <div class="post-page-content">
-                    <p>{{ post.content | safe }}</p>
-                    <hr>
-                    <strong>When: </strong>{{ post.event_date }}<br>
-                    <strong>Location: </strong>{{ post.location }}<br>
-                    <strong>Ticket Price: </strong>£{{ post.event_price }}<br>
+                <div class="comment-body">
+                    {{ comment.body | linebreaks }}
                 </div>
             </div>
-        </div> 
-        <!-- Credit comments (https://djangocentral.com/building-a-blog-application-with-django/) -->
-        <div class="container">
-            <div class="row">
-                <div class="col col-md-8 offset-md-2 mt-3">
-                    <div class="card">
-                        <div class="card-body">
-                            {% if comments.count > 0 %}
-                            <h1 class="text-center text-uppercase">Comments</h1>
-                            <hr>
-                            {% else %}
-                            <p class="mt-5 text-center">There are no comments on this post yet! Would you like to add yours?</p>
-                            {% endif %}
-                            {% for comment in comments %}
-                            <div class="comments text-center" style="padding: 10px">
-                                <p class="font-weight-bold">
-                                    <span><i class="fa fa-user text-black" id="user-comment-icon"></i> {{ comment.name | upper}}</span>
-                                    <span class="font-weight-normal">
-                                        {{ comment.created_on }}
-                                    </span>
-                                </p>
-                                {{ comment.body | linebreaks }}
-                                <hr>
-                            </div>
-                            {% endfor %}
-                            {% if new_comment %}
-                            <div class="alert alert-success text-center" role="alert">
-                                Your comment is awaiting moderation
-                            </div>
-                            {% else %}
-                            <h1 class="text-center pt-5">Leave a comment</h1>
-                            <div class="comments pt-5 text-center" style="padding: 10px">
-                                <form method="post">
-                                    {% csrf_token %}
-                                    {% for field in comment_form %}
-                                    {{ field | as_crispy_field }}
-                                    {% endfor %}
-                                    <button type="submit" class="btn text-white text-uppercase add-comment-btn rounded">
-                                        Submit Comment
-                                    </button>
-                                </form>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-comments">
+                <i class="fas fa-comments"></i>
+                <p>No comments yet! Be the first to share your thoughts about this event.</p>
             </div>
+        {% endif %}
+
+        <!-- Comment Form -->
+        {% if new_comment %}
+        <div class="comment-success">
+            <i class="fas fa-check-circle"></i>
+            <strong>Thank you!</strong> Your comment is awaiting moderation and will be visible once approved.
         </div>
-        <div class="col-12 text-center pt-5 mb-4">
-            <a href="{% url 'blog' %}" class="btn text-white text-uppercase back-to-events-btn btn-lg">
-                <span><i class="fa-solid fa-hand-point-left" id="back-to-events-icon"></i></span>
-                Back to Events
-            </a>
+        {% else %}
+        <div class="comment-form-section">
+            <h3>Leave a Comment</h3>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in comment_form %}
+                {{ field | as_crispy_field }}
+                {% endfor %}
+                <button type="submit" class="comment-submit-btn">
+                    Submit Comment
+                </button>
+            </form>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
