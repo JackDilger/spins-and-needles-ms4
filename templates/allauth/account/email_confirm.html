@@ -1,33 +1,181 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 {% load account %}
 
 {% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Modern centered confirmation card */
+    .confirm-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7rem 1rem 4rem 1rem;
+        min-height: calc(100vh - 300px);
+    }
 
-{% block inner_content %}
-<hr>
-<h1 class="mb-4">{% trans "Confirm E-mail Address" %}</h1>
-<hr>
+    .confirm-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem 3rem;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+    }
 
-{% if confirmation %}
+    .confirm-card h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #000;
+        letter-spacing: 1px;
+    }
 
-{% user_display confirmation.email_address.user as user_display %}
+    .confirm-icon {
+        font-size: 4rem;
+        color: #ff914d;
+        margin-bottom: 1.5rem;
+    }
 
-<p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+    .confirm-message {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
 
-<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-{% csrf_token %}
-    <button class="btn all-auth-btn text-white rounded-0" type="submit">{% trans 'Confirm' %}</button>
-</form>
+    .confirm-message a {
+        color: #ff914d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
 
-{% else %}
+    .confirm-message a:hover {
+        color: #ffaa70;
+        text-decoration: underline;
+    }
 
-{% url 'account_email' as email_url %}
+    .email-highlight {
+        color: #000;
+        font-weight: bold;
+    }
 
-<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
+    .confirm-btn {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        background: #ff914d;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+    }
 
-{% endif %}
+    .confirm-btn:hover {
+        background: #ffaa70;
+        color: #000;
+        transform: scale(1.05);
+    }
 
+    .error-icon {
+        font-size: 4rem;
+        color: #c44d0e;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .confirm-container {
+            padding: 8rem 1rem 2rem 1rem;
+            min-height: auto;
+        }
+
+        .confirm-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .confirm-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .confirm-icon,
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .confirm-message {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confirm-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .confirm-card {
+            padding: 1.5rem 1.2rem;
+        }
+
+        .confirm-card h1 {
+            font-size: 1.6rem;
+        }
+
+        .confirm-message {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="confirm-container">
+    <div class="confirm-card">
+        {% if confirmation %}
+            <div class="confirm-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+
+            <h1>{% trans "Confirm E-mail Address" %}</h1>
+
+            {% user_display confirmation.email_address.user as user_display %}
+
+            <p class="confirm-message">
+                {% blocktrans with confirmation.email_address.email as email %}
+                Please confirm that <span class="email-highlight">{{ email }}</span> is an e-mail address for user <span class="email-highlight">{{ user_display }}</span>.
+                {% endblocktrans %}
+            </p>
+
+            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                {% csrf_token %}
+                <button class="confirm-btn" type="submit">{% trans 'Confirm Email' %}</button>
+            </form>
+        {% else %}
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+
+            <h1>{% trans "Invalid Link" %}</h1>
+
+            {% url 'account_email' as email_url %}
+
+            <p class="confirm-message">
+                {% blocktrans %}
+                This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
+                {% endblocktrans %}
+            </p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
