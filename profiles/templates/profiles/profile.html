@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/css/profile.min.css' %}">
-{% endblock %}
-
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -13,61 +9,360 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Page Title */
+    .profile-title {
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .profile-title h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 2rem;
+        color: #000;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    .profile-title p {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 0;
+    }
+
+    /* Section Headers */
+    .section-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .section-card:hover {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .section-header {
+        font-family: 'Squada One', cursive;
+        font-size: 2rem;
+        color: #000;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #ff914d;
+        position: relative;
+    }
+
+    .section-header i {
+        color: #ff914d;
+        margin-right: 0.5rem;
+    }
+
+    /* Form Styling */
+    #profile-update-form .form-control,
+    #profile-update-form .form-select,
+    #profile-update-form select {
+        border: 2px solid #e0e0e0;
+        border-radius: 5px;
+        padding: 0.75rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: white;
+        appearance: auto;
+        line-height: 1.5;
+        min-height: 3rem;
+    }
+
+    #profile-update-form .form-control:focus,
+    #profile-update-form .form-select:focus,
+    #profile-update-form select:focus {
+        border-color: #ff914d;
+        box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
+        outline: none;
+    }
+
+    #profile-update-form label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        display: block;
+        width: 100%;
+    }
+
+    #profile-update-form .mb-3,
+    #profile-update-form .form-group {
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    /* Update Button */
+    .update-information-btn {
+        background: #ff914d;
+        border: none;
+        padding: 0.8rem 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        color: #000;
+        font-family: 'Squada One', cursive;
+    }
+
+    .update-information-btn:hover {
+        background: #ffaa70;
+        transform: scale(1.05);
+        color: #000;
+    }
+
+    /* Order History Table */
+    .order-history {
+        background: #f8f0e3;
+        border-radius: 8px;
+        padding: 1rem;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .order-history table {
+        margin-bottom: 0;
+    }
+
+    .order-history thead th {
+        background: #000;
+        color: #ff914d;
+        font-family: 'Squada One', cursive;
+        font-size: 1.1rem;
+        padding: 1rem 0.5rem;
+        border: none;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        letter-spacing: 1px;
+    }
+
+    .order-history tbody tr {
+        background: white;
+        border-bottom: 2px solid #f8f0e3;
+        transition: background-color 0.2s ease;
+    }
+
+    .order-history tbody tr:hover {
+        background: #fff5e6;
+    }
+
+    .order-history tbody td {
+        padding: 1rem 0.5rem;
+        vertical-align: top;
+        color: #333;
+    }
+
+    .order-history tbody td a {
+        color: #c44d0e;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .order-history tbody td a:hover {
+        color: #ff914d;
+        text-decoration: underline;
+    }
+
+    .order-history .list-unstyled {
+        margin-bottom: 0;
+    }
+
+    .order-history .list-unstyled li {
+        padding: 0.25rem 0;
+        color: #666;
+    }
+
+    /* Empty State */
+    .empty-orders {
+        text-align: center;
+        padding: 3rem 2rem;
+        color: #666;
+    }
+
+    .empty-orders i {
+        font-size: 4rem;
+        color: #ff914d;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .empty-orders p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .shop-now-btn {
+        background: #ff914d;
+        color: #000;
+        border: none;
+        padding: 0.8rem 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+    }
+
+    .shop-now-btn:hover {
+        background: #ffaa70;
+        transform: scale(1.05);
+        color: #000;
+        text-decoration: none;
+    }
+
+    /* Content Container */
+    .profile-content {
+        padding: 2rem 0 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .profile-title {
+            padding-top: 5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .profile-content {
+            padding: 1.5rem 0 2rem;
+        }
+
+        .profile-title {
+            padding-top: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-title h1 {
+            font-size: 1.75rem;
+        }
+
+        .section-card {
+            padding: 1.5rem;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+        }
+
+        .order-history {
+            max-height: 400px;
+        }
+
+        .order-history thead th {
+            font-size: 0.9rem;
+            padding: 0.75rem 0.25rem;
+        }
+
+        .order-history tbody td {
+            padding: 0.75rem 0.25rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Custom scrollbar for order history */
+    .order-history::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .order-history::-webkit-scrollbar-track {
+        background: #f8f0e3;
+        border-radius: 4px;
+    }
+
+    .order-history::-webkit-scrollbar-thumb {
+        background: #ff914d;
+        border-radius: 4px;
+    }
+
+    .order-history::-webkit-scrollbar-thumb:hover {
+        background: #c44d0e;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <div class="row text-center">
-        <div class="col">
-            <hr>
-            <h1 class="mb-4">My Profile</h1>
-            <hr>
-        </div>
+<div class="container profile-content">
+    <!-- Page Title -->
+    <div class="profile-title">
+        <h1>Welcome, {{ user.username }}</h1>
+        <p>Manage your account and view your order history</p>
     </div>
+
     <div class="row">
-        <div class="col-12 col-lg-6">
-            <p class="text-black">Default Delivery Information</p>
-            <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button class="btn update-information-btn rounded-0 text-uppercase text-white float-right mb-4">Update Information</button>
-            </form>
+        <!-- Default Delivery Information -->
+        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <div class="section-card">
+                <h2 class="section-header">
+                    <i class="fas fa-shipping-fast"></i>
+                    Default Delivery Information
+                </h2>
+                <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn update-information-btn float-end mt-3">Update Information</button>
+                </form>
+            </div>
         </div>
+
+        <!-- Order History -->
         <div class="col-12 col-lg-6">
-            <p class="text-black">Order History</p>
-            <div class="order-history table-responsive">
-                <table class="table table-sm table-borderless">
-                    <thead>
-                        <tr>
-                            <th>Order Number</th>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Order Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in orders %}
-                        <tr>
-                            <td>
-                                <a class="text-black" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                    {{ order.order_number|truncatechars:6 }}
-                                </a>
-                            </td>
-                            <td>{{ order.date }}</td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    {% for item in order.lineitems.all %}
-                                    <li class="small">
-                                        {% if item.product.coffee_grind %}
-                                        Grind {{ item.product.grind|upper }}
-                                        {% endif %}{{ item.product.name }} x{{ item.quantity }}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
-                            <td>£{{ order.grand_total }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="section-card">
+                <h2 class="section-header">
+                    <i class="fas fa-history"></i>
+                    Order History
+                </h2>
+                {% if orders %}
+                <div class="order-history table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                        {{ order.order_number|truncatechars:6 }}
+                                    </a>
+                                </td>
+                                <td>{{ order.date }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                        <li class="small">
+                                            {{ item.product.name }} x{{ item.quantity }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td><strong>£{{ order.grand_total }}</strong></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-orders">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>You haven't placed any orders yet.</p>
+                    <a href="{% url 'products' %}" class="shop-now-btn">Start Shopping</a>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
