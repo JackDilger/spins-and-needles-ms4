@@ -1,22 +1,156 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
-{% block inner_content %}
-<hr>
-<h1 class="mb-4">{% trans "Sign Out" %}</h1>
-<hr>
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+{% block extra_css %}
+<style>
+    /* Modern centered logout form - matching login page design */
+    .logout-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7rem 1rem 4rem 1rem;
+    }
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
-  {% endif %}
-  <a class="btn all-auth-btn text-white rounded-0" href="{% url 'home' %}">Cancel</a>
-  <button class="btn all-auth-btn text-white rounded-0" type="submit">{% trans 'Sign Out' %}</button>
-</form>
+    .logout-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem 3rem 2.5rem 3rem;
+        max-width: 550px;
+        width: 100%;
+        text-align: center;
+    }
 
+    .logout-card h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        color: #000;
+        letter-spacing: 1px;
+    }
+
+    .logout-card p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .logout-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .logout-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Squada One', cursive;
+        letter-spacing: 1px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .logout-btn-primary {
+        background: #ff914d;
+        color: #000;
+        min-width: 150px;
+    }
+
+    .logout-btn-primary:hover {
+        background: #ffaa70;
+        color: #000;
+        transform: scale(1.05);
+    }
+
+    .logout-btn-secondary {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+        min-width: 150px;
+    }
+
+    .logout-btn-secondary:hover {
+        background: #000;
+        color: #fff;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .logout-container {
+            min-height: auto;
+            padding: 8rem 1rem 2rem 1rem;
+            align-items: flex-start;
+        }
+
+        .logout-card {
+            padding: 1.5rem 1.5rem;
+        }
+
+        .logout-card h1 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .logout-card p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logout-buttons {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.8rem;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .logout-container {
+            padding: 8rem 1rem 2rem 1rem;
+        }
+
+        .logout-card {
+            padding: 1.5rem 1.2rem;
+        }
+
+        .logout-card h1 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="logout-container">
+    <div class="logout-card">
+        <h1>{% trans "Sign Out" %}</h1>
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+            {% endif %}
+
+            <div class="logout-buttons">
+                <a class="logout-btn logout-btn-secondary" href="{% url 'home' %}">Cancel</a>
+                <button class="logout-btn logout-btn-primary" type="submit">{% trans 'Sign Out' %}</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
