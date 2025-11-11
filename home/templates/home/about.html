@@ -306,44 +306,8 @@
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<div class="about-hero">
-    <div class="about-hero-content">
-        <p class="about-hero-tagline">A place to discover music, artists and events.</p>
-    </div>
-    <div class="scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</div>
-
-<!-- Stats Section -->
-<div class="stats-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="stat-box">
-                    <span class="stat-number">1985</span>
-                    <span class="stat-label">Established</span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-box">
-                    <span class="stat-number">40+</span>
-                    <span class="stat-label">Years of Passion</span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-box">
-                    <span class="stat-number">100s</span>
-                    <span class="stat-label">Of Rare Records & New Releases</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Main Content -->
-<div class="container">
+<div class="container" style="margin-top: 5rem;">
     <!-- Mission and Visit Us Side by Side -->
     <div class="content-section">
         <div class="row d-flex">
@@ -431,18 +395,4 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    // Smooth scroll when clicking the scroll indicator
-    document.querySelector('.scroll-indicator').addEventListener('click', function() {
-        const statsSection = document.querySelector('.stats-section');
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const yOffset = -headerHeight;
-        const y = statsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        window.scrollTo({
-            top: y,
-            behavior: 'smooth'
-        });
-    });
-</script>
 {% endblock %}
