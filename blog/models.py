@@ -7,6 +7,17 @@ STATUS = (
     (1, "Publish")
 )
 
+GENRE = (
+    ('uk_garage', 'UK Garage'),
+    ('house', 'House'),
+    ('techno', 'Techno'),
+    ('trance', 'Trance'),
+    ('hardstyle', 'Hardstyle'),
+    ('electronic', 'Electronic'),
+    ('disco', 'Disco'),
+    ('jungle', 'Jungle'),
+)
+
 
 # Credit djangocentral(see readme credits section)
 class Post(models.Model):
@@ -22,6 +33,8 @@ class Post(models.Model):
     event_price = models.DecimalField(max_digits=6, decimal_places=2,
                                       default=0)
     location = models.TextField(null=True, blank=True)
+    genre = models.CharField(max_length=50, choices=GENRE,
+                            default='electronic', null=False, blank=False)
 
     class Meta:
         ordering = ['-event_date']

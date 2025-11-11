@@ -106,49 +106,54 @@
     /* Event Item - Linear Layout */
     .event-item {
         background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
         display: flex;
         flex-direction: row;
-        min-height: 200px;
+        gap: 24px;
+        padding: 24px;
     }
 
     .event-item:hover {
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
     }
 
     .event-image {
-        flex: 0 0 300px;
+        flex: 0 0 280px;
+        width: 280px;
+        height: 220px;
         position: relative;
         overflow: hidden;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 12px;
+    }
+
+    .event-image picture {
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 
     .event-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 12px;
+        display: block;
     }
 
     .event-content {
         flex: 1;
-        padding: 2rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-width: 0;
     }
 
     .event-category {
         display: inline-block;
         background: #f8f0e3;
         color: #000;
-        padding: 0.4rem 1rem;
+        padding: 6px 14px;
         border-radius: 20px;
         font-size: 0.85rem;
         font-weight: 600;
@@ -158,10 +163,10 @@
 
     .event-title {
         font-family: 'Squada One', cursive;
-        font-size: 1.8rem;
+        font-size: 2rem;
         color: #000;
         margin-bottom: 1rem;
-        line-height: 1.3;
+        line-height: 1.2;
     }
 
     .event-title a {
@@ -179,7 +184,7 @@
         flex-wrap: wrap;
         gap: 1.5rem;
         margin-bottom: 1.5rem;
-        font-size: 0.9rem;
+        font-size: 14px;
         color: #666;
     }
 
@@ -191,6 +196,7 @@
 
     .event-meta-item i {
         color: #ff914d;
+        font-size: 14px;
     }
 
     .event-footer {
@@ -202,7 +208,16 @@
 
     .event-location {
         color: #666;
-        font-size: 0.9rem;
+        font-size: 14px;
+    }
+
+    .event-location i {
+        color: #ff914d;
+        margin-right: 0.25rem;
+    }
+
+    .event-location:hover i {
+        color: #ff914d;
     }
 
     .event-btn {
@@ -281,6 +296,36 @@
         }
     }
 
+    @media (max-width: 768px) {
+        .event-item {
+            flex-direction: column;
+            gap: 0;
+            padding: 0;
+        }
+
+        .event-image {
+            flex: none;
+            width: 100%;
+            height: 200px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .event-content {
+            padding: 24px;
+        }
+
+        .event-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .event-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
     @media (max-width: 480px) {
         .events-header {
             padding: 1.5rem 1rem 1.25rem;
@@ -301,27 +346,12 @@
             letter-spacing: 0.2px;
         }
 
-        .event-item {
-            flex-direction: column;
-        }
-
-        .event-image {
-            flex: 0 0 250px;
-        }
-
         .event-content {
-            padding: 1.5rem;
+            padding: 20px;
         }
 
-        .event-footer {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .event-btn {
-            width: 100%;
-            text-align: center;
+        .event-title {
+            font-size: 1.75rem;
         }
     }
 </style>
@@ -341,17 +371,15 @@
         {% for post in posts %}
         <div class="event-item">
             <div class="event-image">
-                <a href="{% url 'post_detail' post.slug %}">
-                    {% if post.image %}
-                    {% webp_img post.image MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" True %}
-                    {% else %}
-                    {% webp_img "no-image-event.jpg" MEDIA_URL post.title "" "width: 100%; height: 100%; object-fit:cover;" True %}
-                    {% endif %}
-                </a>
+                {% if post.image %}
+                {% webp_img post.image MEDIA_URL post.title "" "" True %}
+                {% else %}
+                {% webp_img "no-image-event.jpg" MEDIA_URL post.title "" "" True %}
+                {% endif %}
             </div>
             <div class="event-content">
                 <div>
-                    <span class="event-category">Standup Comedy</span>
+                    <span class="event-category">{{ post.get_genre_display }}</span>
                     <h2 class="event-title">
                         <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
                     </h2>
