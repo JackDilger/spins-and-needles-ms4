@@ -11,122 +11,536 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .bag-hero {
+        padding: 4rem 0 1rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .bag-hero h1 {
+        font-family: 'Squada One', sans-serif;
+        color: #000;
+        font-size: 3.5rem;
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .bag-hero-subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 991px) {
+        .bag-hero {
+            padding: 6rem 0 1rem 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bag-hero {
+            padding: 7rem 0 1rem 0;
+        }
+
+        .bag-hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .bag-hero-subtitle {
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .bag-hero {
+            padding: 10rem 0 1rem 0;
+        }
+    }
+
+    /* Shopping Bag Table */
+    .bag-table-wrapper {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table thead {
+        background: #fff;
+        color: #333;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    .table thead th {
+        border: none;
+        padding: 1rem 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s ease;
+    }
+
+    .table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .table tbody tr:hover {
+        background-color: #fafafa;
+    }
+
+    .table tbody td {
+        vertical-align: middle;
+        padding: 1rem 0.75rem;
+    }
+
+    .product-image-cell {
+        width: 120px;
+    }
+
+    .product-image-cell img {
+        max-width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-image-cell img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-name {
+        font-weight: 700;
+        color: #000;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .product-sku {
+        color: #666;
+        font-size: 0.75rem;
+    }
+
+    .product-price {
+        font-weight: 700;
+        color: #000;
+        font-size: 0.95rem;
+    }
+
+    /* Quantity Selector */
+    .quantity-select {
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 0.4rem;
+        font-weight: 600;
+        transition: border-color 0.2s ease;
+        font-size: 0.85rem;
+    }
+
+    .quantity-select:focus {
+        border-color: #ff914d;
+        box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
+    }
+
+    .update-link, .remove-item {
+        color: #ff914d;
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        display: inline-block;
+        margin-top: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .update-link:hover, .remove-item:hover {
+        color: #c44d0e;
+        text-decoration: underline;
+    }
+
+    /* Totals Section */
+    .totals-section {
+        background: #fff;
+        padding: 1.75rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .totals-section p {
+        margin: 0.75rem 0;
+        font-size: 1rem;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .totals-label {
+        font-weight: 500;
+    }
+
+    .totals-value {
+        font-weight: 700;
+        color: #000;
+    }
+
+    .bag-total-text {
+        font-size: 1.05rem;
+        color: #333;
+        margin-bottom: 0.5rem !important;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .delivery-text {
+        font-size: 1rem;
+        color: #333;
+        padding-bottom: 0.75rem;
+    }
+
+    .grand-total-text {
+        font-size: 1.4rem;
+        color: #000;
+        font-weight: 700;
+        padding-top: 0.75rem;
+        border-top: 2px solid #000;
+        margin-top: 0.75rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .free-delivery-message {
+        background: linear-gradient(135deg, #fff5eb 0%, #ffe8d1 100%);
+        border: 2px solid #ff914d;
+        padding: 0.75rem 1rem;
+        margin-top: 1.25rem;
+        border-radius: 8px;
+        color: #000;
+        font-size: 0.9rem;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .free-delivery-message strong {
+        color: #c44d0e;
+        font-weight: 700;
+        font-size: 1.05rem;
+    }
+
+    /* Buttons */
+    .bag-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #e0e0e0;
+        flex-wrap: nowrap;
+    }
+
+    .keep-shopping-btn {
+        background: #000;
+        border: 2px solid #000;
+        color: #fff;
+        padding: 0.6rem 1rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .keep-shopping-btn:hover {
+        background: #333;
+        border-color: #333;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+    }
+
+    .secure-checkout-btn {
+        background: #ff914d;
+        border: 2px solid #ff914d;
+        color: #000;
+        padding: 0.6rem 1rem;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        transition: all 0.2s ease;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .secure-checkout-btn i {
+        color: #000;
+    }
+
+    .secure-checkout-btn:hover {
+        background: #ffaa70;
+        border-color: #ffaa70;
+        color: #000;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(255, 145, 77, 0.3);
+        text-decoration: none;
+    }
+
+    .secure-checkout-btn:hover i {
+        color: #000;
+    }
+
+    /* Empty Bag State */
+    .empty-bag-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: #f8f0e3;
+        border-radius: 10px;
+        margin: 2rem 0;
+    }
+
+    .empty-bag-section .lead {
+        font-size: 1.5rem;
+        color: #666;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+    }
+
+    .empty-bag-icon {
+        font-size: 5rem;
+        color: #ff914d !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-bag-icon i {
+        font-weight: 900;
+        color: #ff914d !important;
+    }
+
+    .empty-bag-icon svg {
+        fill: #ff914d !important;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 991px) {
+        .bag-table-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .totals-section {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .table thead {
+            display: none;
+        }
+
+        .table tbody tr {
+            display: block;
+            margin-bottom: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .table tbody td {
+            display: block;
+            text-align: left;
+            padding: 0.5rem;
+            border: none;
+        }
+
+        .table tbody td::before {
+            content: attr(data-label);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #ff914d;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .product-image-cell {
+            text-align: center;
+        }
+
+        .product-image-cell::before {
+            display: none;
+        }
+
+        .totals-section {
+            padding: 1.5rem;
+        }
+
+        .bag-actions {
+            flex-direction: column;
+        }
+
+        .bag-actions .keep-shopping-btn,
+        .bag-actions .secure-checkout-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .remove-item {
+            float: none !important;
+            display: block;
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h1 class="mb-4">Shopping Bag</h1>
-            <hr>
+<!-- Hero Section -->
+<div class="bag-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Shopping Bag</h1>
+                <p class="bag-hero-subtitle">Review your selection before checkout</p>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container mb-5">
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            <div class="table-responsive rounded">
-                <table class="table table-sm table-borderless">
-                    <thead class="text-black">
-                        <tr>
-                            <th scope="col">Product Info</th>
-                            <th scope="col"></th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Subtotal</th>
-                        </tr>
-                    </thead>
-                    {% for item in bag_items %}
-                    <tr>
-                        <td class="p-3 w-25">
-                            {% if item.product.image %}
-                            {% webp_picture item.product.image.url item.product.name "img-fluid rounded" False %}
-                            {% else %}
-                            {% webp_img "no_image.jpg" MEDIA_URL item.product.name "img-fluid rounded" "" False %}
-                            {% endif %}
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-black">Catalogue Number: {{ item.product.sku|upper }}</p>
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">£{{ item.product.price }}</p>
-                        </td>
-                        <td class="py-3 w-25">
-                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
-                                {% csrf_token %}
-                                <!-- Credit quantity selector (https://stackoverflow.com/questions/37559963/how-to-retain-select-option-value-after-submit-in-django) -->
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <select class="form-control form-select mx-auto" name="quantity" value="{{ item.quantity }}" data-product_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
-                                            <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1
-                                            </option>
-                                            <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2
-                                            </option>
-                                            <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3
-                                            </option>
-                                            <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4
-                                            </option>
-                                            <option value="5" {% if item.quantity == 5 %}selected{% endif %}>5
-                                            </option>
-                                            <option value="6" {% if item.quantity == 6 %}selected{% endif %}>6
-                                            </option>
-                                            <option value="7" {% if item.quantity == 7 %}selected{% endif %}>7
-                                            </option>
-                                            <option value="8" {% if item.quantity == 8 %}selected{% endif %}>8
-                                            </option>
-                                            <option value="9" {% if item.quantity == 9 %}selected{% endif %}>9
-                                            </option>
-                                            <option value="10" {% if item.quantity == 10 %}selected{% endif %}>10
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                            <a class="update-link"><small>Update</small></a>
-                            <a class="remove-item float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td colspan="5" class="pt-5 text-right">
-                            <p class="bag-total-text"><strong>Bag Total: £{{ total|floatformat:2 }}</strong></p>
-                            <p>Delivery: £{{ delivery|floatformat:2 }}</p>
-                            <p class="mt-4 grand-total-text"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></p>
-                            {% if free_delivery_delta > 0 %}
-                            <p class="mb-1 text-black">
-                                You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
-                            </p>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="text-right">
-                            <a href="{% url 'products' %}" class="btn keep-shopping-btn text-white rounded-0 btn-lg">
-                                <span>
-                                    <i id="keep-shopping-icon-bag" class="fas fa-hand-point-left"></i>
-                                </span>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="bag-table-wrapper">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product Info</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in bag_items %}
+                                <tr>
+                                    <td class="product-image-cell" data-label="Product">
+                                        {% if item.product.image %}
+                                        {% webp_picture item.product.image.url item.product.name "img-fluid" False %}
+                                        {% else %}
+                                        {% webp_img "no_image.jpg" MEDIA_URL item.product.name "img-fluid" "" False %}
+                                        {% endif %}
+                                    </td>
+                                    <td data-label="Details">
+                                        <p class="product-name">{{ item.product.name }}</p>
+                                        <p class="product-sku">Catalogue Number: {{ item.product.sku|upper }}</p>
+                                    </td>
+                                    <td data-label="Price">
+                                        <p class="product-price">£{{ item.product.price }}</p>
+                                    </td>
+                                    <td data-label="Quantity">
+                                        <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <select class="form-control form-select quantity-select" name="quantity" value="{{ item.quantity }}" data-product_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
+                                                    <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1</option>
+                                                    <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2</option>
+                                                    <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
+                                                    <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4</option>
+                                                    <option value="5" {% if item.quantity == 5 %}selected{% endif %}>5</option>
+                                                    <option value="6" {% if item.quantity == 6 %}selected{% endif %}>6</option>
+                                                    <option value="7" {% if item.quantity == 7 %}selected{% endif %}>7</option>
+                                                    <option value="8" {% if item.quantity == 8 %}selected{% endif %}>8</option>
+                                                    <option value="9" {% if item.quantity == 9 %}selected{% endif %}>9</option>
+                                                    <option value="10" {% if item.quantity == 10 %}selected{% endif %}>10</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <a class="update-link">Update</a>
+                                        <a class="remove-item float-end" id="remove_{{ item.item_id }}">Remove</a>
+                                    </td>
+                                    <td data-label="Subtotal">
+                                        <p class="product-price">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Totals and Checkout Section -->
+                <div class="col-12 col-lg-6">
+                    <div class="totals-section">
+                        <p class="bag-total-text">
+                            <span class="totals-label">Bag Total:</span>
+                            <span class="totals-value">£{{ total|floatformat:2 }}</span>
+                        </p>
+                        <p class="delivery-text">
+                            <span class="totals-label">Delivery:</span>
+                            <span class="totals-value">£{{ delivery|floatformat:2 }}</span>
+                        </p>
+                        <p class="grand-total-text">
+                            <span class="totals-label">Grand Total:</span>
+                            <span class="totals-value">£{{ grand_total|floatformat:2 }}</span>
+                        </p>
+                        {% if free_delivery_delta > 0 %}
+                        <div class="free-delivery-message">
+                            You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
+                        </div>
+                        {% endif %}
+
+                        <!-- Action Buttons -->
+                        <div class="bag-actions">
+                            <a href="{% url 'products' %}" class="keep-shopping-btn">
+                                <i class="fas fa-chevron-left"></i>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <a href="{% url 'checkout' %}" class="btn secure-checkout-btn text-white rounded-0 btn-lg">
+                            <a href="{% url 'checkout' %}" class="secure-checkout-btn">
+                                <i class="fas fa-lock"></i>
                                 <span class="text-uppercase">Secure Checkout</span>
-                                <span>
-                                    <i id="secure-checkout-icon" class="fas fa-lock"></i>
-                                </span>
                             </a>
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             {% else %}
-            <p class="lead mb-5">Your bag is empty.</p>
-            <a href="{% url 'products' %}" class="btn keep-shopping-btn text-white rounded-0 btn-lg">
-                <span>
-                    <i id="keep-shopping-icon-bag-empty" class="fas fa-hand-point-left"></i>
-                </span>
-                <span class="text-uppercase">Keep Shopping</span>
-            </a>
+            <!-- Empty Bag State -->
+            <div class="empty-bag-section">
+                <div class="empty-bag-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <p class="lead">Your bag is empty.</p>
+                <a href="{% url 'products' %}" class="btn keep-shopping-btn btn-lg">
+                    <i class="fas fa-chevron-left"></i>
+                    <span class="text-uppercase">Start Shopping</span>
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>
