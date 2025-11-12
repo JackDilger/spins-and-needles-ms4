@@ -12,13 +12,189 @@
 </div>
 {% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Page Header - Light Vinyl Poster Style */
+    .products-header {
+        text-align: center;
+        padding: 5rem 1rem 1.75rem;
+        background: linear-gradient(180deg, #fdf6ed 0%, #f8f0e3 100%);
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .products-header h1 {
+        font-family: 'Squada One', cursive;
+        font-size: 3.5rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #000;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+        line-height: 1;
+        background: linear-gradient(135deg, #000 0%, #2a2a2a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .products-header p {
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        line-height: 1.5;
+    }
+
+    /* Product Cards */
+    .product-card {
+        background: #ff914d;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        padding: 1rem;
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card .card-img-top {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .card-img-top {
+        transform: scale(1.02);
+    }
+
+    .product-card .card-body {
+        padding: 1rem 0.5rem 0.5rem;
+        flex-grow: 1;
+    }
+
+    .product-card .card-body p {
+        margin-bottom: 0.5rem;
+        color: #000;
+    }
+
+    .product-card .card-body hr {
+        border: none;
+        border-top: 2px solid #000;
+        margin: 0.5rem 0;
+        opacity: 1;
+    }
+
+    .product-card .card-footer {
+        background: transparent;
+        border: none;
+        padding: 0.5rem;
+    }
+
+    .product-price {
+        font-family: 'Squada One', cursive;
+        font-size: 1.5rem;
+        color: #000;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Admin Buttons */
+    .admin-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .edit-btn, .delete-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-radius: 5px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+        letter-spacing: 0.5px;
+    }
+
+    .edit-btn {
+        background: #000;
+        color: white;
+    }
+
+    .edit-btn:hover {
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+    }
+
+    .delete-btn {
+        background: #000;
+        color: white;
+    }
+
+    .delete-btn:hover {
+        background: #dc3545;
+        color: white;
+        text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .products-header {
+            padding-top: 9rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .products-header {
+            padding-top: 9.5rem;
+        }
+
+        .products-header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .products-header p {
+            font-size: 0.95rem;
+        }
+
+        .product-card {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .products-header {
+            padding-top: 10rem;
+        }
+
+        .products-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h1 class="text-black">Products</h1>
-            <hr class="w-50 mb-1">
-        </div>
+    <div class="products-header">
+        <h1>Our Vinyl Collection</h1>
+        <p>Browse our curated selection of records across all genres</p>
     </div>
     <div class="row">
         <div class="product-container col-10 offset-1">
@@ -26,7 +202,7 @@
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 border-0">
+                    <div class="card product-card border-0">
                         {% if product.image %}
                         <a href="{% url 'product_detail' product.id %}">
                             {% webp_picture product.image.url product.name "card-img-top img-fluid" True %}
@@ -36,22 +212,18 @@
                             {% webp_img "no_image.jpg" MEDIA_URL product.name "card-img-top img-fluid" "" True %}
                         </a>
                         {% endif %}
-                        <div class="card-body pb-0">
+                        <div class="card-body">
                             <p class="mb-0 font-weight-bold">{{ product.name }}</p>
                             <hr>
                             <p class="mb-0 font-weight-bold">{{ product.artist }}</p>
-                            <hr>
                         </div>
-                        <div class="card-footer pt-0 border-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="mb-0 font-weight-bold text-left">£{{ product.price }}</p>
-                                    {% if request.user.is_superuser %}
-                                    <hr>
-                                    <small class="mb-0 text-left">
-                                        <a class="btn-sm text-white text-uppercase edit-btn" href="{% url 'edit_product' product.id %}">Edit</a>
-                                        <a href="#delete-product" class="btn-sm text-white text-uppercase delete-btn ml-2" data-toggle="modal" data-target="#delete-product" aria-label="Link to delete product modal">Delete</a>
-                                    </small>
+                        <div class="card-footer">
+                            <p class="product-price mb-0">£{{ product.price }}</p>
+                            {% if request.user.is_superuser %}
+                            <div class="admin-buttons">
+                                <a class="edit-btn" href="{% url 'edit_product' product.id %}">Edit</a>
+                                <a href="#delete-product" class="delete-btn" data-toggle="modal" data-target="#delete-product" aria-label="Link to delete product modal">Delete</a>
+                            </div>
                                     <div class="modal fade" id="delete-product" tabindex="-1" role="dialog" aria-label="Confirm delete product modal" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -71,9 +243,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {% endif %}
-                                </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
