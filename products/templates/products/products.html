@@ -146,6 +146,43 @@
         color: white;
     }
 
+    /* Sorting Buttons */
+    .sort-buttons {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .sort-btn {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid #000;
+        background: #fff;
+        color: #000;
+    }
+
+    .sort-btn:hover {
+        background: #fafafa;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .sort-btn.active {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+    }
+
+    .sort-btn.active:hover {
+        background: #333;
+        color: #fff;
+    }
+
     .delete-btn:hover {
         background: #dc3545;
         color: white;
@@ -153,6 +190,34 @@
     }
 
     /* Responsive */
+    @media (max-width: 531px) {
+        .sort-btn {
+            padding: 5px 10px;
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 461px) {
+        .sort-btn {
+            padding: 4px 8px;
+            font-size: 0.7rem;
+        }
+    }
+
+    @media (max-width: 426px) {
+        .sort-btn {
+            padding: 3px 6px;
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 391px) {
+        .sort-btn {
+            padding: 2px 5px;
+            font-size: 0.6rem;
+        }
+    }
+
     @media (max-width: 991px) {
         .products-header {
             padding-top: 9rem;
@@ -198,7 +263,16 @@
     </div>
     <div class="row">
         <div class="product-container col-10 offset-1">
-            <div class="row mt-1 mb-2"></div>
+            <div class="row mt-1 mb-2">
+                <!-- Sorting Buttons -->
+                <div class="col-12">
+                    <div class="sort-buttons">
+                        <a href="?sort=all" class="sort-btn {% if current_sort == 'all' or not current_sort %}active{% endif %}">All Products</a>
+                        <a href="?sort=price_low" class="sort-btn {% if current_sort == 'price_low' %}active{% endif %}">Price: Low to High</a>
+                        <a href="?sort=price_high" class="sort-btn {% if current_sort == 'price_high' %}active{% endif %}">Price: High to Low</a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">

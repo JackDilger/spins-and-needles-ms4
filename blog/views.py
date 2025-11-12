@@ -8,10 +8,21 @@ from profiles.models import UserProfile
 def posts(request):
     """ A view for the blog page """
 
-    posts = Post.objects.select_related('author').filter(status=1).order_by('-event_date')
+    posts = Post.objects.select_related('author').filter(status=1)
+
+    # Get sort parameter from request
+    sort = request.GET.get('sort', 'nearest')
+
+    # Apply sorting based on parameter
+    if sort == 'nearest':
+        # Nearest = soonest event date
+        posts = posts.order_by('event_date')
+    else:  # 'all' or default
+        posts = posts.order_by('-event_date')
 
     context = {
         'posts': posts,
+        'current_sort': sort,
     }
 
     return render(request, 'blog/blog.html', context)

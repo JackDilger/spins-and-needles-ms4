@@ -16,21 +16,19 @@ def all_products(request):
     products = Product.objects.select_related('genre').all()
     query = None
     sort = None
-    direction = None
 
     if request.GET:
+        # Handle sorting
         if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            sort = request.GET['sort']
+            if sort == 'price_low':
+                products = products.order_by('price')
+            elif sort == 'price_high':
+                products = products.order_by('-price')
+            else:  # 'all' or default
+                products = products.order_by('-id')  # Default order
 
+        # Handle search
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -42,12 +40,10 @@ def all_products(request):
                        Q(description__icontains=query))
             products = products.filter(queries)
 
-    current_sorting = f'{sort}_{direction}'
-
     context = {
         'products': products,
         'search_term': query,
-        'current_sorting': current_sorting,
+        'current_sort': sort,
     }
 
     return render(request, 'products/products.html', context)
