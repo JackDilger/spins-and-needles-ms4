@@ -245,11 +245,11 @@ a.genre-badge>span.badge:hover {
 }
 
 .secure-checkout-btn {
-    background-color: black;
+    background-color: #ff914d;
 }
 
 .secure-checkout-btn:hover {
-    background-color: #ff914d;
+    background-color: #ffaa70;
 }
 
 #secure-checkout-icon:hover {
