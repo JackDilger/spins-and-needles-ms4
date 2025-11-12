@@ -5,6 +5,343 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.min.css' %}">
+<style>
+    /* Hero Section */
+    .checkout-hero {
+        padding: 4rem 0 1rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .checkout-hero h1 {
+        font-family: 'Squada One', sans-serif;
+        color: #000;
+        font-size: 3.5rem;
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .checkout-hero-subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 991px) {
+        .checkout-hero {
+            padding: 6rem 0 1rem 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .checkout-hero {
+            padding: 7rem 0 1rem 0;
+        }
+
+        .checkout-hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .checkout-hero-subtitle {
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .checkout-hero {
+            padding: 10rem 0 1rem 0;
+        }
+    }
+
+    /* Order Summary Card */
+    .order-summary-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .order-summary-title {
+        font-family: 'Squada One', sans-serif;
+        font-size: 1.5rem;
+        color: #000;
+        margin-bottom: 1.25rem;
+        letter-spacing: 1px;
+    }
+
+    .order-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s ease;
+    }
+
+    .order-item:last-child {
+        border-bottom: none;
+    }
+
+    .order-item:hover {
+        background-color: #fafafa;
+    }
+
+    .order-item-image {
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .order-item-image:hover {
+        transform: scale(1.05);
+    }
+
+    .order-item-name {
+        font-weight: 700;
+        color: #000;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .order-item-qty {
+        color: #666;
+        font-size: 0.85rem;
+    }
+
+    .order-totals {
+        background: #f8f0e3;
+        padding: 1.25rem;
+        border-radius: 8px;
+        margin-top: 1.25rem;
+    }
+
+    .order-totals p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-totals strong {
+        color: #000;
+        font-weight: 700;
+    }
+
+    .grand-total {
+        font-size: 1.2rem !important;
+        font-weight: 700;
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+        border-top: 2px solid #000;
+    }
+
+    /* Form Card */
+    .checkout-form-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-section-title {
+        font-family: 'Squada One', sans-serif;
+        font-size: 1.3rem;
+        color: #000;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .fieldset-label {
+        font-family: 'Squada One', sans-serif;
+        font-size: 1.1rem;
+        color: #000;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.75rem;
+    }
+
+    fieldset {
+        border: 1px solid #e0e0e0;
+        background: #fafafa;
+        padding: 1.5rem !important;
+        border-radius: 8px;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 0.75rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        height: auto;
+    }
+
+    .form-control:focus {
+        border-color: #ff914d;
+        box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
+        background-color: #fff;
+    }
+
+    /* Country select dropdown fix */
+    select.form-control {
+        padding: 0.6rem 0.75rem;
+        line-height: 1.8;
+    }
+
+    /* Checkbox styling - Override Bootstrap 5 blue */
+    .form-check-input {
+        border: 2px solid #000 !important;
+        cursor: pointer;
+        accent-color: #000;
+    }
+
+    .form-check-input:checked {
+        background-color: #000 !important;
+        border-color: #000 !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+    }
+
+    .form-check-input:focus {
+        border-color: #000 !important;
+        box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .form-check-label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .form-check-label a {
+        color: #ff914d;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .form-check-label a:hover {
+        color: #c44d0e;
+        text-decoration: underline;
+    }
+
+    /* Buttons */
+    .submit-buttons {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .adjust-bag-btn {
+        background: #000;
+        border: 2px solid #000;
+        color: #fff !important;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .adjust-bag-btn:hover {
+        background: #333;
+        border-color: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .secure-checkout-btn {
+        background: #ff914d;
+        border: 2px solid #ff914d;
+        color: #000 !important;
+        padding: 0.75rem 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: all 0.2s ease;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .secure-checkout-btn:hover {
+        background: #ffaa70;
+        border-color: #ffaa70;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(255, 145, 77, 0.3);
+    }
+
+    .payment-warning {
+        background: linear-gradient(135deg, #fff5eb 0%, #ffe8d1 100%);
+        border: 2px solid #ff914d;
+        padding: 0.75rem 1rem;
+        margin-top: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #000;
+    }
+
+    .payment-warning strong {
+        color: #c44d0e;
+        font-size: 1.05rem;
+    }
+
+    #payment-warning-icon {
+        color: #ff914d;
+        margin-right: 0.5rem;
+    }
+
+    /* Stripe Elements */
+    #card-element {
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 0.75rem;
+        background: #fff;
+        transition: border-color 0.2s ease;
+    }
+
+    #card-element:focus-within {
+        border-color: #ff914d;
+        box-shadow: 0 0 0 0.2rem rgba(255, 145, 77, 0.25);
+    }
+
+    #card-errors {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 991px) {
+        .order-summary-card {
+            margin-bottom: 2rem;
+        }
+
+        .submit-buttons {
+            flex-direction: column;
+        }
+
+        .adjust-bag-btn,
+        .secure-checkout-btn {
+            width: 100%;
+            min-width: auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .checkout-form-card,
+        .order-summary-card {
+            padding: 1.25rem;
+        }
+
+        fieldset {
+            padding: 1rem !important;
+        }
+    }
+</style>
 {% endblock %}
 
 {% block page_header %}
@@ -16,61 +353,64 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h1 class="mb-4">Checkout</h1>
-            <hr>
+<!-- Hero Section -->
+<div class="checkout-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Checkout</h1>
+                <p class="checkout-hero-subtitle">Complete your order securely</p>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container mb-5">
     <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <p>Order Summary ({{ product_count }})</p>
-            <div class="row">
-                <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small">Item</p>
+        <div class="col-12 col-lg-6 order-lg-last">
+            <div class="order-summary-card">
+                <h2 class="order-summary-title">Order Summary ({{ product_count }})</h2>
+
+                {% for item in bag_items %}
+                <div class="row order-item">
+                    <div class="col-3">
+                        <a href="{% url 'product_detail' item.product.id %}" aria-label="product-image">
+                            {% if item.product.image %}
+                            {% webp_picture item.product.image.url item.product.name "w-100 order-item-image" False %}
+                            {% else %}
+                            {% webp_img "no_image.jpg" MEDIA_URL item.product.name "w-100 order-item-image" "" False %}
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <p class="order-item-name">{{ item.product.name }}</p>
+                        <p class="order-item-qty">Qty: {{ item.quantity }}</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="my-0 font-weight-bold">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    </div>
                 </div>
-                <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small">Subtotal</p>
-                </div>
-            </div>
-            {% for item in bag_items %}
-            <div class="row">
-                <div class="col-2 mb-1">
-                    <a href="{% url 'product_detail' item.product.id %}" aria-label="product-image">
-                        {% if item.product.image %}
-                        {% webp_picture item.product.image.url item.product.name "w-100" False %}
-                        {% else %}
-                        {% webp_img "no_image.jpg" MEDIA_URL item.product.name "w-100" "" False %}
-                        {% endif %}
-                    </a>
-                </div>
-                <div class="col-7">
-                    <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                    <p class="my-0 small">Qty: {{ item.quantity }}</p>
-                </div>
-                <div class="col-3 text-right">
-                    <p class="my-0 small">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                </div>
-            </div>
-            {% endfor %}
-            <hr class="my-0">
-            <div class="row text-black text-right">
-                <div class="col-7 offset-2">
-                    <p class="my-0">Order Total:</p>
-                    <p class="my-0">Delivery:</p>
-                    <p class="my-0">Grand Total:</p>
-                </div>
-                <div class="col-3">
-                    <p class="my-0">£{{ total | floatformat:2 }}</p>
-                    <p class="my-0">£{{ delivery | floatformat:2 }}</p>
-                    <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                {% endfor %}
+
+                <div class="order-totals">
+                    <p>
+                        <span>Order Total:</span>
+                        <span><strong>£{{ total | floatformat:2 }}</strong></span>
+                    </p>
+                    <p>
+                        <span>Delivery:</span>
+                        <span><strong>£{{ delivery | floatformat:2 }}</strong></span>
+                    </p>
+                    <p class="grand-total">
+                        <span>Grand Total:</span>
+                        <span>£{{ grand_total | floatformat:2 }}</span>
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <p>Please fill out the form below to complete your order</p>
+            <div class="checkout-form-card">
+                <p class="form-section-title">Please fill out the form below to complete your order</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
@@ -105,27 +445,22 @@
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'view_bag' %}" class="btn adjust-bag-btn text-white rounded-0 btn-lg">
-                        <span>
-                            <i id="adjust-bag-icon" class="fas fa-hand-point-left"></i>
-                        </span>
+                <div class="submit-buttons">
+                    <a href="{% url 'view_bag' %}" class="btn adjust-bag-btn">
+                        <i id="adjust-bag-icon" class="fas fa-chevron-left"></i>
                         <span class="text-uppercase">Adjust Bag</span>
                     </a>
-                    <button id="submit-button" class="btn secure-checkout-btn text-white rounded-0 btn-lg">
+                    <button id="submit-button" class="btn secure-checkout-btn">
                         <span class="text-uppercase">Complete Order</span>
-                        <span>
-                            <i id="complete-order-icon" class="fas fa-lock"></i>
-                        </span>
+                        <i id="complete-order-icon" class="fas fa-lock"></i>
                     </button>
-                    <p class="small my-0">
-                        <span>
-                            <i id="payment-warning-icon" class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
+                </div>
+                <div class="payment-warning">
+                    <i id="payment-warning-icon" class="fas fa-exclamation-circle"></i>
+                    <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>

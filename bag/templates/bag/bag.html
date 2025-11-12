@@ -161,15 +161,33 @@
         cursor: pointer;
         font-weight: 600;
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: all 0.2s ease;
         display: inline-block;
         margin-top: 0.4rem;
         font-size: 0.8rem;
+        position: relative;
+    }
+
+    .update-link::after, .remove-item::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        content: '.';
+        color: transparent;
+        background: #000;
+        height: 1px;
     }
 
     .update-link:hover, .remove-item:hover {
-        color: #c44d0e;
-        text-decoration: underline;
+        color: #ff914d;
+        text-decoration: none;
+    }
+
+    .update-link:hover::after, .remove-item:hover::after {
+        width: 100%;
     }
 
     /* Totals Section */
@@ -466,7 +484,7 @@
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group">
-                                                <select class="form-control form-select quantity-select" name="quantity" value="{{ item.quantity }}" data-product_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
+                                                <select class="form-control form-select quantity-select qty_input" name="quantity" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                                                     <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1</option>
                                                     <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2</option>
                                                     <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
@@ -480,8 +498,8 @@
                                                 </select>
                                             </div>
                                         </form>
-                                        <a class="update-link">Update</a>
-                                        <a class="remove-item float-end" id="remove_{{ item.item_id }}">Remove</a>
+                                        <a class="update-link text-decoration-none" data-item_id="{{ item.item_id }}">Update</a>
+                                        <a class="remove-item text-decoration-none float-end" id="remove_{{ item.item_id }}">Remove</a>
                                     </td>
                                     <td data-label="Subtotal">
                                         <p class="product-price">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
